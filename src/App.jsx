@@ -25,7 +25,7 @@ export default function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/pizza" element={<Pizza />} />
-            <Route path="/pizza/:postId" element={<Single />} /> {/* Route for single post */}
+            <Route path="/pizza/:slug" element={<Single />} /> {/* Route for single post */}
           </Routes>
         </LazyLoadComponent>
       </main>
