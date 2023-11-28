@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-import './Pizza.css';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
-import { Helmet } from 'react-helmet-async';
+import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import axios from 'axios'
+import './Pizza.css'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+import 'react-lazy-load-image-component/src/effects/blur.css'
+import { Helmet } from 'react-helmet-async'
 
 
 const Pizza = () => {
@@ -32,12 +32,10 @@ const Pizza = () => {
             : Promise.resolve();
 
           // Fetch the Yoast SEO data
-          const seoFetch = post._links['wp:yoast_head'] && post._links['wp:yoast_head'].length > 0
-            ? axios.get(post._links['wp:yoast_head'][0].href)
-              .then(seoResponse => {
-                post.seoData = seoResponse.data;
-              })
-            : Promise.resolve();
+          const seoFetch = axios.get(`https://sarpinos.mysites.io/wp-json/yoast/v1/get_head?url=https://sarpinos.mysites.io/pizza/`)
+            .then(seoResponse => {
+              post.seoData = seoResponse.data.json;
+            });
 
           // Ensure both promises are resolved
           return Promise.all([imageFetch, hoverImageFetch, seoFetch]).then(() => post);
@@ -55,12 +53,19 @@ const Pizza = () => {
       .catch(error => console.error(error));
   }, []);
 
+  if (!posts) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className='container'>
       <Helmet>
-        {seoData && seoData.title && <title>{seoData.title}</title>}
-        {seoData && seoData.description && <meta name="description" content={seoData.description} />}
+        {seoData && seoData.og_title && <title>{seoData.og_title}</title>}
+        {seoData && seoData.og_description && <meta name="description" content={seoData.og_description} />}
+        {seoData && seoData.og_image && seoData.og_image[0] && seoData.og_image[0].url && <meta property="og:image" content={seoData.og_image[0].url} />}
+        {seoData && seoData.og_site_name && <meta name="site_name" content={seoData.og_site_name} />}
+        <meta property="og:type" content="article" />
+        <meta property="og:URL" content="https://www.gosarpinos.com/pizza/" />
       </Helmet>
       {posts.map(post => (
         <div key={post.id} className='pizza-container'>

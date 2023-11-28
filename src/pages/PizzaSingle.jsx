@@ -5,7 +5,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import { Helmet } from 'react-helmet-async';
 
-const SingleCustomPost = () => {
+const PizzaSingle = () => {
   const [post, setPost] = useState(null);
   const [imageSrc, setImageSrc] = useState('');
   const [seoData, setSeoData] = useState({});
@@ -30,17 +30,11 @@ const SingleCustomPost = () => {
         }
 
         // Fetch the Yoast SEO data
-        return axios.get(`https://sarpinos.mysites.io/wp-json/wp/v2/pizza?slug=${slug}`);
+        return axios.get(`https://sarpinos.mysites.io/wp-json/yoast/v1/get_head?url=https://sarpinos.mysites.io/pizza/${slug}/`);
       })
       .then(seoResponse => {
-        const post = seoResponse.data[0];
-        if (post && post._links['wp:yoast_head'] && post._links['wp:yoast_head'].length > 0) {
-          return axios.get(post._links['wp:yoast_head'][0].href);
-        }
-      })
-      .then(seoDataResponse => {
-        if (seoDataResponse && seoDataResponse.data) {
-          setSeoData(seoDataResponse.data); // Set the SEO data
+        if (seoResponse && seoResponse.data) {
+          setSeoData(seoResponse.data.json); // Set the SEO data
         }
       })
       .catch(error => console.error(error));
@@ -53,9 +47,12 @@ const SingleCustomPost = () => {
   return (
     <div>
       <Helmet>
-        {seoData && seoData.title && <title>{seoData.title}</title>}
-        {seoData && seoData.description && <meta name="description" content={seoData.description} />}
-        {/* Add more meta tags as needed */}
+        {seoData && seoData.og_title && <title>{seoData.og_title}</title>}
+        {seoData && seoData.og_description && <meta name="description" content={seoData.og_description} />}
+        {seoData && seoData.og_image && seoData.og_image[0] && seoData.og_image[0].url && <meta property="og:image" content={seoData.og_image[0].url} />}
+        {seoData && seoData.og_site_name && <meta name="site_name" content={seoData.og_site_name} />}
+        <meta property="og:type" content="article" />
+        <meta property="og:URL" content={(`https://www.gosarpinos.com/pizza/${slug}/`)} />
       </Helmet>
       <h1>{post.title.rendered}</h1>
       <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
@@ -72,4 +69,4 @@ const SingleCustomPost = () => {
   );
 };
 
-export default SingleCustomPost;
+export default PizzaSingle;
