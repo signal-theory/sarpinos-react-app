@@ -33,7 +33,7 @@ const BlogSingle = () => {
   }
 
   return (
-    <div>
+    <div className="page-container">
       <h1>{post.title.rendered}</h1>
       {featuredImage && <img src={featuredImage} alt={post.title.rendered} />}
       <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />

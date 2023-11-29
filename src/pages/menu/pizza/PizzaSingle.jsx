@@ -49,7 +49,7 @@ const PizzaSingle = () => {
       <Helmet>
         {seoData && seoData.og_title && <title>{seoData.og_title}</title>}
         {seoData && seoData.og_description && <meta name="description" content={seoData.og_description} />}
-        {seoData && seoData.og_image && seoData.og_image[0] && seoData.og_image[0].url && <meta property="og:image" content={seoData.og_image[0].url} />}
+        {seoData && imageSrc && <meta property="og:image" content={imageSrc} />}
         {seoData && seoData.og_site_name && <meta name="site_name" content={seoData.og_site_name} />}
         <meta property="og:type" content="article" />
         <meta property="og:URL" content={(`https://www.gosarpinos.com/pizza/${slug}/`)} />

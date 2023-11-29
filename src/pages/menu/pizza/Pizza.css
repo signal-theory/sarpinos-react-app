@@ -1,0 +1,53 @@
+/* Pizza header */
+.pizza-header {
+  display: flex;
+  padding: 2rem 0 2rem;
+}
+.pizza-header img {
+  max-width: 45%;
+}
+.pizza-header .content {
+  width: calc(55% - 2rem);
+  padding: 1rem;
+}
+/* Pizza filter menu */
+.pizza-categories {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 1rem auto;
+}
+.pizza-categories button {
+  margin: 0 0.5rem;
+}
+/* Pizza post list */
+.pizza-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 400px);
+  grid-auto-rows: auto;
+  grid-gap: 20px;
+  justify-content: center;
+  margin: 0 auto;
+}
+.pizza-thumbnail a {
+  display: block;
+  width: 100%;
+  position: relative;
+}
+.pizza-thumbnail span:first-of-type {
+  position: absolute;
+}
+.pizza-thumbnail img {
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+  overflow: hidden;
+  z-index: 999;
+
+  -webkit-transition: opacity 0.5s ease;
+  -o-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+}
+.pizza-thumbnail:hover img.main-image {
+  opacity: 0;
+}

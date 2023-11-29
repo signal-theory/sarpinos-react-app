@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from "axios"
-import BlogCard from '../components/BlogCard';
+import BlogCard from '../../../components/BlogCard';
 
 export default function Blog() {
   const [posts, setPosts] = useState([]);
@@ -18,7 +18,7 @@ export default function Blog() {
   }, [])
 
   return (
-    <div>
+    <div className="page-container">
       <h1>Blog</h1>
       {posts.map((item) => (
         <Link key={item.id} to={`/blog/${item.slug}`}>
