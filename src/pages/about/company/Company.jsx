@@ -12,15 +12,19 @@ const Company = () => {
   const [seoData, setSeoData] = useState({});
 
   const pageId = 49;
-
-  // Fetch Page content, Featured image and SEO data
+  // Fetch Page content, Featured image, and SEO data
   useEffect(() => {
-    axios.get(`https://sarpinos.mysites.io/wp-json/wp/v2/pages?id=${pageId}`)
+    axios.get(`https://sarpinos.mysites.io/wp-json/wp/v2/pages/${pageId}`)
       .then(response => {
-        const post = response.data[0]; // Get the first post
+        const post = response.data; // Get the post data
 
         setPageTitle(post.title.rendered); // Set the page title
         setPageContent(post.content.rendered); // Set the page content
+
+        // Set the SEO data
+        if (post.yoast_head_json) {
+          setSeoData(post.yoast_head_json);
+        }
 
         // If there's a featured image, fetch its details
         if (post.featured_media) {
@@ -33,11 +37,6 @@ const Company = () => {
             });
         }
 
-        // Fetch the Yoast SEO data
-        axios.get(`https://sarpinos.mysites.io/wp-json/wp/v2/pages?id=${pageId}`)
-          .then(seoResponse => {
-            setSeoData(seoResponse.data[0].yoast_meta); // Set the SEO data
-          });
       })
       .catch(error => {
         console.error(error);
@@ -46,17 +45,26 @@ const Company = () => {
       });
   }, [pageId]);
 
-
   return (
-    <div className="full-page-container">
-      <div className="company-hero">
-        {featuredImage && <img src={featuredImage} alt={featuredImageAlt} />}
-        <div className="content">
-          {pageTitle && <h1>{pageTitle}</h1>}
-          {pageContent && <div dangerouslySetInnerHTML={{ __html: pageContent }} />}
+    <>
+      <Helmet>
+        {seoData && seoData.og_title && <title>{seoData.og_title}</title>}
+        {seoData && seoData.og_description && <meta name="description" content={seoData.og_description} />}
+        {seoData && seoData.og_image && seoData.og_image[0] && seoData.og_image[0].url && <meta property="og:image" content={seoData.og_image[0].url} />}
+        {seoData && seoData.og_site_name && <meta name="site_name" content={seoData.og_site_name} />}
+        <meta property="og:type" content="article" />
+        <meta property="og:URL" content={window.location.href} />
+      </Helmet>
+      <div className="full-page-container">
+        <div className="company-hero">
+          {featuredImage && <img src={featuredImage} alt={featuredImageAlt} />}
+          <div className="content">
+            {pageTitle && <h1>{pageTitle}</h1>}
+            {pageContent && <div dangerouslySetInnerHTML={{ __html: pageContent }} />}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 
