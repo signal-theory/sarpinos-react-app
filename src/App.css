@@ -1,15 +1,29 @@
 .page-container {
-  width: calc(95% - 40px);
+  width: calc(90% - 40px);
   max-width: 1300px;
   margin: 70px auto 20px;
   padding: 20px;
   border-radius: 10px;
   background-color: var(--cream-color);
+  color: var(--green-color);
+}
+.full-page-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 80px 0;
+  background-color: var(--cream-color);
+}
+.responsive-column-container {
+  display: grid;
+  gap: 2rem;
+  margin: 0 auto;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  margin: 0 0 0.5em 0;
 }
 
 button {
@@ -23,13 +37,6 @@ button {
   color: #ffffff;
   cursor: pointer;
   transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 img {
   display: block;
@@ -48,4 +55,9 @@ ul {
 /* Helper classes */
 .text-align-center {
   text-align: center;
+}
+.flex-align-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

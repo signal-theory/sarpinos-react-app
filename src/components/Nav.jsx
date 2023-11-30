@@ -13,7 +13,11 @@ function Navigation() {
             <li><Link to="/about/blog">Sarpino's Blog</Link></li>
           </ul>
         </li>
-        <li><Link to="/menu/pizza">Menu</Link></li>
+        <li><span>Menu</span>
+          <ul>
+            <li><Link to="/menu/pizza">Specialty Pizza</Link></li>
+          </ul>
+        </li>
         <li><Link to="/locations">Find Locations</Link></li>
         {/* Add other navigation links here */}
       </ul>

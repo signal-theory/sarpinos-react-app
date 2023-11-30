@@ -11,6 +11,17 @@ const PizzaSingle = () => {
   const [seoData, setSeoData] = useState({});
   const { slug } = useParams();
 
+  const [activeTab, setActiveTab] = useState("tab1");
+  //  Functions to handle Tab Switching
+  const handleTab1 = () => {
+    // update the state to tab1
+    setActiveTab("tab1");
+  };
+  const handleTab2 = () => {
+    // update the state to tab2
+    setActiveTab("tab2");
+  };
+
   useEffect(() => {
     // Fetch the custom post
     axios.get(`https://sarpinos.mysites.io/wp-json/wp/v2/pizza?slug=${slug}`)
@@ -41,11 +52,11 @@ const PizzaSingle = () => {
   }, [slug]);
 
   if (!post) {
-    return <div>Loading...</div>;
+    return <div className="page-container">Loading...</div>;
   }
 
   return (
-    <div>
+    <div className="page-container">
       <Helmet>
         {seoData && seoData.og_title && <title>{seoData.og_title}</title>}
         {seoData && seoData.og_description && <meta name="description" content={seoData.og_description} />}
@@ -54,17 +65,43 @@ const PizzaSingle = () => {
         <meta property="og:type" content="article" />
         <meta property="og:URL" content={(`https://www.gosarpinos.com/pizza/${slug}/`)} />
       </Helmet>
-      <h1>{post.title.rendered}</h1>
-      <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
-      {imageSrc && (
-        <LazyLoadImage
-          alt={post.title.rendered + ' pictured from side angle'}
-          src={imageSrc}
-          effect="blur"
-          className="mask"
-        />
-      )}
-      {/* Display other custom post details as needed */}
+      <div className="pizza-header responsive-column-container">
+        <div className="pizza-image">
+          {imageSrc && (
+            <LazyLoadImage
+              alt={post.title.rendered + ' pictured from side angle'}
+              src={imageSrc}
+              effect="blur"
+              className="mask"
+            />
+          )}
+        </div>
+        <div className="content">
+          <h1>{post.title.rendered}</h1>
+          <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
+          <button>ORDER ONLINE</button>
+          <ul className="tab-list">
+            <li
+              className={activeTab === "tab1" ? "active" : ""}
+              onClick={handleTab1}
+            >
+              Tab 1
+            </li>
+            <li
+              className={activeTab === "tab2" ? "active" : ""}
+              onClick={handleTab2}
+            >
+              Tab 2
+            </li>
+          </ul>
+
+          <div className="tab-content">
+            {activeTab === "tab1" ? <p>TAB 1</p> : <p>TAB 2</p>}
+          </div>
+        </div>
+      </div>
+
+
     </div>
   );
 };

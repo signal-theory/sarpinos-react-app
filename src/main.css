@@ -8,7 +8,8 @@
   --red-color: #ee3124;
   --green-color: #004f39;
   --gray-color: #303030;
-  background-color: var(--red-color);
+  --bkg-color: var(--red-color);
+  background-color: var(--bkg-color);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -53,14 +54,15 @@ html {
 
 a {
   font-weight: 500;
-  color: #333333;
+  color: var(--green-color);
   text-decoration: inherit;
 }
+/*
 a:hover,
 a:focus {
   color: #11177f;
 }
-
+*/
 body {
   display: flex;
   margin: 0;

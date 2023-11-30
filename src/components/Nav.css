@@ -3,15 +3,17 @@ nav {
   position: fixed;
   width: 100%;
   z-index: 99999;
-  background-color: var(--red-color);
+  background-color: var(--bkg-color);
 }
 nav ul {
   position: relative;
   display: block;
   top: 0;
   left: 0;
-  width: 95%;
+  width: calc(90% - 40px);
   max-width: 1300px;
+  margin: 0;
+  padding: 0 20px;
   margin: 10px auto 0;
   background-color: var(--green-color);
   border-radius: 32px;

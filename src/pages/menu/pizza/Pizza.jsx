@@ -8,7 +8,7 @@ import { Helmet } from 'react-helmet-async'
 
 
 const Pizza = () => {
-
+  const pageId = 34;
   const [posts, setPosts] = useState([]);
   const [filteredPosts, setFilteredPosts] = useState([]);
   const [featuredImage, setFeaturedImage] = useState(null);
@@ -19,53 +19,7 @@ const Pizza = () => {
   const [selectedTerm, setSelectedTerm] = useState('Specialty');
   const availableTerms = ['Specialty', 'Meatless', 'Vegan', 'Popular'];
 
-  // Fetch custom posts when component mounts
-  useEffect(() => {
-    axios.get(`https://sarpinos.mysites.io/wp-json/wp/v2/pizza`)
-      .then(response => {
-        setPosts(response.data);
-      })
-      .catch(error => console.error(error));
-  }, []);
-
-  // Filter posts when the selected term changes
-  useEffect(() => {
-    console.log('selectedTerm:', selectedTerm); // Log the selected term
-
-    const newFilteredPosts = posts.filter(post => {
-      const condition = post.acf.menu_category.includes(selectedTerm);
-      console.log('post.acf.menu_category:', post.acf.menu_category); // Log the categories for each post
-      console.log('condition:', condition); // Log the result of the filter condition
-      return condition;
-    });
-
-    setFilteredPosts(newFilteredPosts);
-  }, [selectedTerm, posts]);
-
-  // Fetch the featured image for the page
-  useEffect(() => {
-    axios.get(`https://sarpinos.mysites.io/wp-json/wp/v2/pages?slug=pizza`)
-      .then(response => {
-        const post = response.data[0];
-        setPageTitle(post.title.rendered); // Set the page title
-        setPageContent(post.content.rendered); // Set the page content
-
-        // If there's a featured image, fetch its details
-        const imageId = post.featured_media;
-        if (imageId) {
-          return axios.get(`https://sarpinos.mysites.io/wp-json/wp/v2/media/${imageId}`);
-        }
-      })
-      .then(imageResponse => {
-        if (imageResponse && imageResponse.data) {
-          setFeaturedImage(imageResponse.data.source_url); // Set the featured image URL
-          setFeaturedImageAlt(imageResponse.data.alt_text); // Set the featured image alt text
-        }
-      })
-      .catch(error => console.error(error));
-  }, []);
-
-  // Fetch posts with images and SEO data
+  // Fetch Pizza posts with images and SEO data
   useEffect(() => {
     axios.get(`https://sarpinos.mysites.io/wp-json/wp/v2/pizza`)
       .then(response => {
@@ -78,7 +32,6 @@ const Pizza = () => {
               })
             : Promise.resolve();
 
-          // Fetches for the second image field
           const hoverImageFetch = post.acf.hover_image
             ? axios.get(`https://sarpinos.mysites.io/wp-json/wp/v2/media/${post.acf.hover_image}`)
               .then(hoverImageResponse => {
@@ -86,35 +39,64 @@ const Pizza = () => {
               })
             : Promise.resolve();
 
-          // Fetch the Yoast SEO data
-          const seoFetch = axios.get(`https://sarpinos.mysites.io/wp-json/yoast/v1/get_head?url=https://sarpinos.mysites.io/pizza/`)
-            .then(seoResponse => {
-              post.seoData = seoResponse.data.json;
-            });
-
-          // Ensure both promises are resolved
-          return Promise.all([imageFetch, hoverImageFetch, seoFetch]).then(() => post);
+          return Promise.all([imageFetch, hoverImageFetch]).then(() => post);
         });
-
         return Promise.all(fetches);
       })
-      .then(postsWithImagesAndSeo => {
-        setPosts(postsWithImagesAndSeo);
-        // Set the SEO data for the first post as the SEO data for the page
-        if (postsWithImagesAndSeo.length > 0) {
-          setSeoData(postsWithImagesAndSeo[0].seoData);
-        }
+      .then(postsWithImages => {
+        setPosts(postsWithImages); // Set the posts
       })
       .catch(error => console.error(error));
   }, [selectedTerm]);
 
-  if (!posts) {
-    return <div>Loading...</div>;
-  }
+  // if (!posts) {
+  //   return <div>Loading...</div>;
+  // }
+
+  // Filter posts when the selected term changes
+  useEffect(() => {
+    const newFilteredPosts = posts.filter(post => post.acf.menu_category.includes(selectedTerm));
+    setFilteredPosts(newFilteredPosts);
+  }, [selectedTerm, posts]);
 
   const handleTermChange = (event) => {
     setSelectedTerm(event.target.value);
   };
+
+  // Fetch the featured image and SEO data for the page
+  useEffect(() => {
+    axios.get(`https://sarpinos.mysites.io/wp-json/wp/v2/pages/${pageId}`)
+      .then(response => {
+        const post = response.data; // Get the first post
+
+        setPageTitle(post.title.rendered); // Set the page title
+        setPageContent(post.content.rendered); // Set the page content
+
+        // If there's a featured image, fetch its details
+        if (post.featured_media) {
+          axios.get(`https://sarpinos.mysites.io/wp-json/wp/v2/media/${post.featured_media}`)
+            .then(imageResponse => {
+              if (imageResponse && imageResponse.data) {
+                setFeaturedImage(imageResponse.data.source_url); // Set the featured image URL
+                setFeaturedImageAlt(imageResponse.data.alt_text); // Set the featured image alt text
+              }
+            });
+        }
+
+        // Fetch the Yoast SEO data
+        axios.get(`https://sarpinos.mysites.io/wp-json/yoast/v1/get_head?url=https://sarpinos.mysites.io/pizza/`)
+          .then(seoResponse => {
+            setSeoData(seoResponse.data); // Set the SEO data
+          });
+      })
+      .catch(error => {
+        console.error(error);
+        setPageTitle('Page not found'); // Set a default page title
+        setPageContent('The page you are looking for does not exist.'); // Set a default page content
+      });
+  }, []);
+
+
 
   return (
     <div className="page-container">
@@ -126,9 +108,11 @@ const Pizza = () => {
         <meta property="og:type" content="article" />
         <meta property="og:URL" content={window.location.href} />
       </Helmet>
-      <div className="pizza-header">
-        {featuredImage && <img src={featuredImage} alt={featuredImageAlt} />}
-        <div className="content">
+      <div className="pizza-header responsive-column-container">
+        <div className="pizza-image">
+          {featuredImage && <img src={featuredImage} alt={featuredImageAlt} />}
+        </div>
+        <div className="content flex-align-center">
           <h1>{pageTitle}</h1>
           <div dangerouslySetInnerHTML={{ __html: pageContent }} />
         </div>
@@ -136,7 +120,15 @@ const Pizza = () => {
       <h2 className="text-align-center">Sort Specialty Pizzas</h2>
       <div className="pizza-categories">
         {availableTerms.map((option, index) => (
-          <button onClick={handleTermChange} key={`term${index}`} value={option}>{option}</button>
+          <button
+            onClick={handleTermChange}
+            key={`term${index}`}
+            value={option}
+            className={selectedTerm === option ? 'active' : ''}
+          >
+            {option}
+          </button>
+
         ))}
       </div>
       <div className="pizza-list">
@@ -146,7 +138,7 @@ const Pizza = () => {
             return (
               <div key={post.id} className="pizza-item">
                 <div className="pizza-thumbnail">
-                  <Link to={`/pizza/${post.slug}`}>
+                  <Link to={`/menu/pizza/${post.slug}`}>
                     {post.hoverImageDetails && (
                       <LazyLoadImage
                         src={post.hoverImageDetails.source_url}
@@ -166,7 +158,7 @@ const Pizza = () => {
                   </Link>
                 </div>
                 <div className="pizza-label">
-                  <h2><Link to={`/pizza/${post.slug}`}>{post.title.rendered}</Link></h2>
+                  <h2><Link to={`/menu/pizza/${post.slug}`}>{post.title.rendered}</Link></h2>
                   <div dangerouslySetInnerHTML={{ __html: post.acf.caption }} />
                   <button>ORDER ONLINE</button>
                 </div>
