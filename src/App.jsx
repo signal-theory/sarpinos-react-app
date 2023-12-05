@@ -8,7 +8,9 @@ import Blog from './pages/about/blog/Blog';
 import BlogSingle from './pages/about/blog/BlogSingle';
 import Why from './pages/about/why/Why';
 import Pizza from './pages/menu/pizza/Pizza';
-import PizzaSingle from './pages/menu/pizza/PizzaSingle';
+import PizzaItem from './pages/menu/pizza/PizzaItem';
+import Calzones from './pages/menu/calzones/Calzones';
+import CalzonesItem from './pages/menu/calzones/CalzonesItem';
 import Catering from './pages/catering/Catering';
 import Locations from './pages/locations/Locations';
 import Loyalty from './pages/loyalty/Loyalty';
@@ -30,8 +32,10 @@ export default function App() {
             <Route path="/about/blog" element={<Blog />} />
             <Route path="/about/why-sarpinos" element={<Why />} />
             <Route path="/about/blog/:slug" element={<BlogSingle />} />
-            <Route path="/menu/pizza" element={<Pizza />} />
-            <Route path="/menu/pizza/:slug" element={<PizzaSingle />} />
+            <Route path="/menu/sarpinos-specialty-pizza" element={<Pizza />} />
+            <Route path="/menu/sarpinos-specialty-pizza/:slug" element={<PizzaItem />} />
+            <Route path="/menu/calzones" element={<Calzones />} />
+            <Route path="/menu/calzones/:slug" element={<CalzonesItem />} />
             <Route path="/catering" element={<Catering />} />
             <Route path="/locations" element={<Locations />} />
             <Route path="/loyalty" element={<Loyalty />} />

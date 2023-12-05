@@ -8,9 +8,10 @@ import { Helmet } from 'react-helmet-async'
 import he from 'he';
 
 
-const Pizza = () => {
-  const pageId = 34; // Page ID
-  const postType = 'pizza'; // Post type slug
+const Calzones = () => {
+  const pageId = 94; // Page ID
+  const postType = 'calzones'; // Post type slug
+  const orderHandler = (title) => console.log('Order an', title);
   const [posts, setPosts] = useState([]);
   const [filteredPosts, setFilteredPosts] = useState([]);
   const [featuredImage, setFeaturedImage] = useState(null);
@@ -19,10 +20,10 @@ const Pizza = () => {
   const [pageContent, setPageContent] = useState(null);
   const [pageSlug, setPageSlug] = useState(null);
   const [seoData, setSeoData] = useState({});
-  const [selectedTerm, setSelectedTerm] = useState('Specialty');
-  const availableTerms = ['Specialty', 'Meatless', 'Vegan', 'Popular'];
+  const [selectedTerm, setSelectedTerm] = useState('All Calzones');
+  const availableTerms = ['All Calzones', 'Meatless', 'Vegan', 'Sweet', 'Popular'];
 
-  // Fetch Pizza posts with images and SEO data
+  // Fetch Calzone posts with images and SEO data
   useEffect(() => {
     axios.get(`https://sarpinos.mysites.io/wp-json/wp/v2/${postType}`)
       .then(response => {
@@ -72,9 +73,9 @@ const Pizza = () => {
       .then(response => {
         const post = response.data; // Get the post data
 
-        setPageSlug(post.slug); // Set the page slug
         setPageTitle(post.title.rendered); // Set the page title
         setPageContent(post.content.rendered); // Set the page content
+        setPageSlug(post.slug); // Set the page slug
 
         // Set the SEO data
         if (post.yoast_head_json) {
@@ -130,10 +131,10 @@ const Pizza = () => {
           selectedTerm={selectedTerm}
           handleTermChange={handleTermChange}
         />
-        <MenuList filteredPosts={filteredPosts} pageSlug={pageSlug} />
+        <MenuList filteredPosts={filteredPosts} pageSlug={pageSlug} orderHandler={orderHandler} />
       </div>
     </>
   );
 };
 
-export default Pizza;
+export default Calzones;

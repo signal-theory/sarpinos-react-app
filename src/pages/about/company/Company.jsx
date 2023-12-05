@@ -56,10 +56,11 @@ const Company = () => {
         <meta property="og:URL" content={window.location.href} />
       </Helmet>
       <div className="full-page-container">
-        <div className="company-hero">
-          {featuredImage && <img src={featuredImage} alt={featuredImageAlt} />}
+        <div className="responsive-column-container">
+          <div className="featured-image">
+            {featuredImage && <img src={featuredImage} alt={featuredImageAlt} />}
+          </div>
           <div className="content">
-            {pageTitle && <h1>{pageTitle}</h1>}
             {pageContent && <div dangerouslySetInnerHTML={{ __html: pageContent }} />}
           </div>
         </div>

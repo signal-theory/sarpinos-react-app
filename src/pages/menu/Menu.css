@@ -1,35 +1,19 @@
-/* Pizza header */
-.pizza-header {
+/* menupage header */
+.menupage-header {
   display: flex;
   padding: 2rem 0;
 }
-.pizza-header .content {
+.menupage-header .content {
   padding: 0 2rem;
 }
 @media screen and (min-width: 767px) {
-  .pizza-header .content {
+  .menupage-header .content {
     width: calc(80% - 2rem);
   }
 }
-/* Pizza filter menu */
-.pizza-categories {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin: 1rem auto;
-}
-.pizza-categories button {
-  margin: 0 0.5rem;
-  background-color: transparent;
-  border: 1px solid var(--red-color);
-  color: var(--red-color);
-}
-.pizza-categories button.active {
-  background-color: var(--red-color);
-  color: var(--cream-color);
-}
-/* Pizza post list */
-.pizza-list {
+
+/* menupage post list */
+.menupage-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, 400px);
   grid-auto-rows: auto;
@@ -37,15 +21,15 @@
   justify-content: center;
   margin: 0 auto;
 }
-.pizza-thumbnail a {
+.menupage-thumbnail a {
   display: block;
   width: 100%;
   position: relative;
 }
-.pizza-thumbnail span:first-of-type {
+.menupage-thumbnail span:first-of-type {
   position: absolute;
 }
-.pizza-thumbnail img {
+.menupage-thumbnail img {
   width: 400px;
   height: 400px;
   object-fit: cover;
@@ -56,9 +40,13 @@
   -o-transition: opacity 0.5s ease;
   transition: opacity 0.5s ease;
 }
-.pizza-thumbnail:hover img.main-image {
+.menupage-thumbnail:hover img.main-image {
   opacity: 0;
 }
+.menupage-label button {
+  margin: 1rem 0;
+}
+/* Single menu page */
 .tab-list {
   display: grid;
   grid-template-columns: auto auto;

@@ -1,11 +1,12 @@
 import React from 'react'
 import './Locations.css'
 
-export default function Locations() {
+const Locations = () => {
   return (
-    <div className="page-container">
+    <div className="full-page-container">
       <h1>Locations</h1>
       {/* Add content here */}
     </div>
   )
 }
+export default Locations

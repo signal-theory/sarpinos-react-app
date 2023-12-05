@@ -3,7 +3,7 @@ import './Nav.css';
 
 function Navigation() {
   return (
-    <nav>
+    <nav className="main-navigation">
       <ul>
         <li><Link to="/">Home</Link></li>
         <li><span>About</span>
@@ -15,7 +15,8 @@ function Navigation() {
         </li>
         <li><span>Menu</span>
           <ul>
-            <li><Link to="/menu/pizza">Specialty Pizza</Link></li>
+            <li><Link to="/menu/sarpinos-specialty-pizza">Specialty Pizza</Link></li>
+            <li><Link to="/menu/calzones">Calzones</Link></li>
           </ul>
         </li>
         <li><Link to="/locations">Find Locations</Link></li>
