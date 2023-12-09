@@ -1,4 +1,5 @@
 import React from 'react';
+import './CategorySelector.css';
 
 const CategorySelector = ({ selectionTitle, availableTerms, selectedTerm, handleTermChange }) => (
   <>

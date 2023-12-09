@@ -1,15 +1,25 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: museo-sans, sans-serif;
+  font-weight: 500;
+  font-style: normal;
   line-height: 1.5;
-  font-weight: 400;
 
   /* color-scheme: light dark; */
   --cream-color: #f3f0eb;
   --red-color: #ee3124;
+  --darkred-color: #af0f04;
   --green-color: #004f39;
   --gray-color: #303030;
   --bkg-color: var(--red-color);
+  --bkg-gradient: linear-gradient(
+    180deg,
+    var(--darkred-color) 0%,
+    var(--red-color) 87.89%
+  );
   background-color: var(--bkg-color);
+  background: var(--bkg-gradient);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -34,7 +44,7 @@
   box-sizing: border-box;
 }
 html {
-  font-size: 62.5%; /* (62.5/100) * 16px = 10px */
+  font-size: 100%; /* (62.5/100) * 16px = 10px */
   -webkit-text-size-adjust: none; /* for iOS Safari */
   text-size-adjust: none; /* for other mobile browsers */
   box-sizing: border-box;

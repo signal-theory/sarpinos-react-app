@@ -1,0 +1,12 @@
+.homepage-hero {
+  color: #fff !important;
+  background-color: transparent !important;
+}
+.homepage-hero h2 {
+  font-family: museo-slab, serif;
+  font-weight: 700;
+}
+
+.homepage-items .menupage-thumbnail span:first-of-type {
+  position: relative;
+}

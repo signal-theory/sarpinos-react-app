@@ -1,11 +1,47 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import SEOHelmet from '../../../components/SEOHelmet'
+import { fetchData } from '../../fetchData';
+import '../Menu.css'
+import MenuHeader from '../../../components/menu/MenuHeader'
+import MenuList from '../../../components/menu/MenuList'
+
 
 const BuildYourOwn = () => {
+  const orderHandler = (title) => console.log('Order', title);
+  const [posts, setPosts] = useState([]);
+  const [filteredPosts, setFilteredPosts] = useState([]);
+  const [featuredImage, setFeaturedImage] = useState(null);
+  const [featuredImageAlt, setFeaturedImageAlt] = useState(null);
+  const [pageTitle, setPageTitle] = useState(null);
+  const [pageContent, setPageContent] = useState(null);
+  const [pageSlug, setPageSlug] = useState(null);
+  const [seoData, setSeoData] = useState({});
+  const selectedTerm = '';
+
+  const pageId = 91; // Page ID
+  // Fetch data
+  useEffect(() => {
+    fetchData(['pizza', 'calzones'], pageId, selectedTerm, setPosts, setFilteredPosts, setPageSlug, setPageTitle, setPageContent, setSeoData, setFeaturedImage, setFeaturedImageAlt);
+  }, [pageId, selectedTerm]);
+
+  if (!posts) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <div className="page-container">
-      <h1>Build Your Own</h1>
-      {/* Add content here */}
-    </div>
-  )
-}
-export default BuildYourOwn
+    <>
+      <SEOHelmet seoData={seoData} pageSlug={pageSlug} />
+      <div className="page-container">
+        <MenuHeader
+          featuredImage={featuredImage}
+          featuredImageAlt={featuredImageAlt}
+          pageTitle={pageTitle}
+          pageContent={pageContent}
+        />
+        <MenuList filteredPosts={filteredPosts} pageSlug={pageSlug} orderHandler={orderHandler} />
+      </div>
+    </>
+  );
+};
+
+export default BuildYourOwn;

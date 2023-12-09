@@ -55,7 +55,7 @@ const Company = () => {
         <meta property="og:type" content="article" />
         <meta property="og:URL" content={window.location.href} />
       </Helmet>
-      <div className="full-page-container">
+      <div className="full-page-container company-page">
         <div className="responsive-column-container">
           <div className="featured-image">
             {featuredImage && <img src={featuredImage} alt={featuredImageAlt} />}

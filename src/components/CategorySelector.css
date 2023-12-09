@@ -1,0 +1,17 @@
+/* category filter menu */
+.category-filter {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 2rem auto 3rem;
+}
+.category-filter button {
+  margin: 0 0.5rem;
+  background-color: transparent;
+  border: 1px solid var(--red-color);
+  color: var(--red-color);
+}
+.category-filter button.active {
+  background-color: var(--red-color);
+  color: var(--cream-color);
+}

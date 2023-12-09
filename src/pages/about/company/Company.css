@@ -1,12 +1,1 @@
-/* Company hero */
-.company-hero {
-  display: flex;
-  padding: 2rem 0 2rem;
-}
-.company-hero img {
-  max-width: 45%;
-}
-.company-hero .content {
-  width: calc(55% - 2rem);
-  padding: 1rem;
-}
+

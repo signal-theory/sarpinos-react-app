@@ -65,7 +65,7 @@ const MenuItem = ({ itemType, activeTab, tabs, content, orderHandler }) => {
         {seoData && seoData.twitter_card && <meta name="twitter:card" content={seoData.twitter_card} />}
         <meta name="twitter:site" content="@sarpinos_pizza" />
         {seoData && seoData.og_type && <meta property="og:type" content={seoData.og_type} />}
-        <meta property="og:URL" content={(`https://www.gosarpinos.com/sarpinos-specialty-pizza/${slug}/`)} />
+        <meta property="og:URL" content={(`https://www.gosarpinos.com/${itemType}/${slug}/`)} />
       </Helmet>
       <div className="menupage-header responsive-column-container">
         <div className="menupage-image">
@@ -79,7 +79,7 @@ const MenuItem = ({ itemType, activeTab, tabs, content, orderHandler }) => {
           )}
         </div>
         <div className="content">
-          <h1>{post.title.rendered}</h1>
+          <h1 dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
           <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
           <button onClick={orderHandler}>ORDER ONLINE</button>
           <TabList activeTab={activeTab} tabs={tabs} />

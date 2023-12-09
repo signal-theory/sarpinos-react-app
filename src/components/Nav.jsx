@@ -15,6 +15,7 @@ function Navigation() {
         </li>
         <li><span>Menu</span>
           <ul>
+            <li><Link to="/menu/build-your-own">Build Your Own</Link></li>
             <li><Link to="/menu/sarpinos-specialty-pizza">Specialty Pizza</Link></li>
             <li><Link to="/menu/calzones">Calzones</Link></li>
           </ul>
