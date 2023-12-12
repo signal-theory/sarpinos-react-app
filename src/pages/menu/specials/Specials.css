@@ -1,0 +1,55 @@
+/* carousel */
+/* Hide scrollbar for Chrome, Safari and Opera */
+.special-carousel {
+  margin: 2rem auto 0;
+  position: relative;
+  width: 100vw;
+  max-width: 1200px;
+  display: flex;
+  overflow: auto;
+  scroll-snap-type: x mandatory;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.special-carousel::-webkit-scrollbar {
+  display: none;
+}
+.carousel-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  height: 400px;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  background: url(../../../assets/circle-outline-1.svg) center no-repeat;
+}
+.carousel-item:nth-of-type(2) {
+  background: url(../../../assets/circle-outline-2.svg) center no-repeat;
+}
+.carousel-item:nth-of-type(3) {
+  background: url(../../../assets/circle-outline-3.svg) center no-repeat;
+}
+.carousel-item .item {
+  padding: 0 4rem;
+  color: var(--red-color);
+}
+
+.carousel-item .item .item-title {
+  color: var(--red-color);
+  margin: 0;
+}
+.carousel-item .item .item-code {
+  color: var(--green-color);
+}
+.carousel-dot {
+  width: 14px;
+  height: 14px;
+  padding: 0;
+  margin: 10px;
+  border: none;
+  background-color: #ffffff;
+}
+.carousel-dot.active {
+  background-color: var(--green-color);
+}

@@ -56,7 +56,7 @@ const Why = () => {
         <meta property="og:URL" content={window.location.href} />
       </Helmet>
 
-      <div className="full-page-container">
+      <div className="full-page-container inner-hero">
         <div className="content text-align-center">
           {pageContent && <div dangerouslySetInnerHTML={{ __html: pageContent }} />}
         </div>

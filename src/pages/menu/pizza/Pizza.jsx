@@ -36,7 +36,7 @@ const Pizza = () => {
   return (
     <>
       <SEOHelmet seoData={seoData} pageSlug={pageSlug} />
-      <div className="page-container">
+      <div className="page-container cream-color inner-hero">
         <MenuHeader
           featuredImage={featuredImage}
           featuredImageAlt={featuredImageAlt}

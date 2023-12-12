@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import './Company.css'
+//import './Specials.css'
 import axios from 'axios'
 import { Helmet } from 'react-helmet-async'
 
-const Company = () => {
+const Specials = () => {
 
   const [featuredImage, setFeaturedImage] = useState(null);
   const [featuredImageAlt, setFeaturedImageAlt] = useState(null);
@@ -11,7 +11,7 @@ const Company = () => {
   const [pageContent, setPageContent] = useState(null);
   const [seoData, setSeoData] = useState({});
 
-  const pageId = 49;
+  const pageId = 88;
   // Fetch Page content, Featured image, and SEO data
   useEffect(() => {
     axios.get(`https://sarpinos.mysites.io/wp-json/wp/v2/pages/${pageId}`)
@@ -55,12 +55,10 @@ const Company = () => {
         <meta property="og:type" content="article" />
         <meta property="og:URL" content={window.location.href} />
       </Helmet>
-      <div className="full-page-container company-page inner-hero">
-        <div className="responsive-column-container">
-          <div className="featured-image">
-            {featuredImage && <img src={featuredImage} alt={featuredImageAlt} />}
-          </div>
+      <div className="full-page-container specials-page inner-hero">
+        <div className="container text-align-center">
           <div className="content">
+            {pageTitle && <h1 dangerouslySetInnerHTML={{ __html: pageTitle }} />}
             {pageContent && <div dangerouslySetInnerHTML={{ __html: pageContent }} />}
           </div>
         </div>
@@ -69,4 +67,4 @@ const Company = () => {
   )
 }
 
-export default Company
+export default Specials

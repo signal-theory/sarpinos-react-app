@@ -12,20 +12,26 @@ import Pizza from './pages/menu/pizza/Pizza'
 import PizzaItem from './pages/menu/pizza/PizzaItem'
 import Calzones from './pages/menu/calzones/Calzones'
 import CalzonesItem from './pages/menu/calzones/CalzonesItem'
+import Specials from './pages/menu/specials/Specials'
 import Catering from './pages/catering/Catering'
 import Locations from './pages/locations/Locations'
 import Loyalty from './pages/loyalty/Loyalty'
 import { LazyLoadComponent } from 'react-lazy-load-image-component'
 import './App.css'
+import WebFont from 'webfontloader';
 
 
 export default function App() {
-
+  WebFont.load({
+    typekit: {
+      id: 'nqr0nlo'
+    }
+  });
 
   return (
     <>
       <Navigation />
-      <main>
+      <main className="daytime-background-color">
         <LazyLoadComponent>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -38,6 +44,7 @@ export default function App() {
             <Route path="/menu/sarpinos-specialty-pizza/:slug" element={<PizzaItem />} />
             <Route path="/menu/calzones" element={<Calzones />} />
             <Route path="/menu/calzones/:slug" element={<CalzonesItem />} />
+            <Route path="/menu/national-specials" element={<Specials />} />
             <Route path="/catering" element={<Catering />} />
             <Route path="/locations" element={<Locations />} />
             <Route path="/loyalty" element={<Loyalty />} />

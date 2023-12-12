@@ -1,18 +1,20 @@
 .page-container {
-  width: calc(90% - 40px);
   max-width: 1300px;
-  margin: 70px auto 50px;
-  padding: 20px;
+  margin: 0 auto;
+  padding: calc(1rem + 2vw);
   border-radius: 10px;
-  background-color: var(--cream-color);
-  color: var(--green-color);
+}
+.page-container.inner-hero {
+  margin-top: 150px;
 }
 .full-page-container {
-  width: 100%;
-  min-height: calc(100vh - 240px);
+  /* min-height: calc(100vh - 240px); */
   margin: 0 auto;
-  padding: 120px 0;
-  background-color: var(--cream-color);
+  padding: calc(1rem + 2vw);
+}
+.full-page-container.inner-hero {
+  padding: 0;
+  margin-top: 150px;
 }
 .responsive-column-container {
   display: grid;
@@ -20,29 +22,71 @@
   margin: 0 auto;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
-
+.responsive-twothirds-column-container,
+.responsive-three-column-container {
+  display: grid;
+  gap: 2rem;
+  margin: 0 auto;
+  grid-template-columns: 1fr;
+}
+.responsive-twothirds-column-container .content,
 .responsive-column-container .content {
   padding: 0 2rem;
 }
 @media screen and (min-width: 767px) {
+  .responsive-three-column-container {
+    grid-template-columns: 3fr 2fr 2fr;
+  }
+  .responsive-twothirds-column-container {
+    grid-template-columns: 3fr 2fr;
+  }
+  .responsive-twothirds-column-container .content,
   .responsive-column-container .content {
     width: calc(80% - 2rem);
   }
 }
+
+.grid-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1 1 auto;
+}
+
+/* Adobe Font Loading */
+.wf-loading {
+  /* styles to use when web fonts are loading */
+  filter: blur(0.5rem);
+  opacity: 0;
+}
+.wf-active {
+  /* styles to use when web fonts are active */
+  filter: blur(0);
+  opacity: 1;
+}
+.wf-inactive {
+  /* styles to use when web fonts are inactive */
+  filter: blur(0);
+  opacity: 1;
+}
+
 /* Heading styles */
 h1,
 h2,
 h3,
 h5,
 h6 {
-  font-family: nexa-rust-sans-black-2, sans-serif;
+  font-family: nexa-rust-sans-black-2, Impact, Haettenschweiler,
+    "Arial Narrow Bold", sans-serif;
   font-weight: 900;
   font-style: normal;
   line-height: 1.1;
   margin: 0 0 0.5em 0;
 }
 h4 {
-  font-family: museo-slab, serif;
+  font-family: museo-slab, Cambria, Cochin, Georgia, Times, "Times New Roman",
+    serif;
   font-weight: 700;
   font-style: normal;
   line-height: 1.1;
@@ -73,17 +117,23 @@ h6 {
 
 /* HTML elements */
 button,
-a.primary-btn {
+a.btn {
   border-radius: 2rem;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+  border: 2px solid #ffffff;
+  padding: 0.8em 1.2em 0.5em;
   font-size: 0.875em;
   font-weight: 500;
   font-family: nexa-rust-sans-black-2, sans-serif;
-  background-color: var(--red-color);
   color: #ffffff;
   cursor: pointer;
   transition: border-color 0.25s;
+}
+button,
+a.primary-btn {
+  background-color: var(--red-color);
+}
+a.secondary-btn {
+  background-color: var(--green-color);
 }
 img {
   display: block;
@@ -108,4 +158,5 @@ ul {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }

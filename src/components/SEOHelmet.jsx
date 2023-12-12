@@ -17,7 +17,6 @@ const SEOHelmet = ({ seoData, pageSlug }) => (
     <meta name="twitter:site" content="@sarpinos_pizza" />
     {seoData && seoData.og_type && <meta property="og:type" content={seoData.og_type} />}
     <meta property="og:URL" content={`https://www.gosarpinos.com/menu/${pageSlug}`} />
-    <link rel="stylesheet" href="https://use.typekit.net/nqr0nlo.css"></link>
   </Helmet>
 );
 

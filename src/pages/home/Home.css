@@ -10,3 +10,8 @@
 .homepage-items .menupage-thumbnail span:first-of-type {
   position: relative;
 }
+.homepage-specials {
+  background-image: url("../../assets/homepage-bkg-illustrations-black.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
