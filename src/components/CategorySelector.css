@@ -1,15 +1,25 @@
 /* category filter menu */
 .category-filter {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   width: 100%;
   margin: 2rem auto 3rem;
+}
+@media screen and (min-width: 767px) {
+  .category-filter {
+    flex-direction: row;
+  }
 }
 .category-filter button {
   margin: 0 0.5rem;
   background-color: transparent;
   border: 1px solid var(--red-color);
   color: var(--red-color);
+  font-family: museo-sans, Verdana, Geneva, Tahoma, sans-serif;
+  padding: 0 2rem;
+  line-height: 40px;
+  font-size: 0.9375rem;
 }
 .category-filter button.active {
   background-color: var(--red-color);

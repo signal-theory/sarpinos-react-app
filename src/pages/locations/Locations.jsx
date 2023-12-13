@@ -3,10 +3,12 @@ import './Locations.css'
 
 const Locations = () => {
   return (
-    <div className="full-page-container">
-      <h1>Locations</h1>
-      {/* Add content here */}
-    </div>
+    <section className="viewport innerhero">
+      <div className="full-page-container">
+        <h1>Locations</h1>
+        {/* Add content here */}
+      </div>
+    </section>
   )
 }
 export default Locations

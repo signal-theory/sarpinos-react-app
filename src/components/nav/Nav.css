@@ -1,0 +1,66 @@
+:root {
+  --navbar-width: calc(90% - 20px);
+  --mobilemenu-width: calc(93% - 20px);
+  --navbar-padding: 10px;
+}
+nav.main-navigation {
+  top: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 99999;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+li.item {
+  padding: 15px var(--navbar-padding);
+}
+
+li.item.button.heart a::before {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 5px;
+  background: url(../../assets/heart-solid.svg) no-repeat center center;
+  background-size: contain;
+}
+li.item {
+  order: 3;
+  text-align: center;
+}
+.active.item {
+  display: block;
+}
+
+/* Submenu up from mobile screens */
+.submenu {
+  display: none;
+}
+.submenu-active .submenu {
+  display: block;
+}
+.has-submenu a {
+  cursor: pointer;
+}
+
+.has-submenu > a::after {
+  content: "";
+  display: inline-block;
+  height: 10px;
+  width: 10px;
+  margin-left: 5px;
+  background: url(../../assets/arrow-right.svg) no-repeat center center;
+  background-size: contain;
+}
+.has-submenu > a.active::after {
+  transform: rotate(90deg);
+}
+.subitem a {
+  padding: 10px 15px;
+}

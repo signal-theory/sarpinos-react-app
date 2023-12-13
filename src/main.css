@@ -4,6 +4,7 @@
   font-style: normal;
   line-height: 1.5;
 
+  --gutter: 30px;
   /* color-scheme: light dark; */
   --cream-color: #f3f0eb;
   --red-color: #ee3124;
@@ -96,10 +97,14 @@ body {
   grid-template-columns: 1fr;
   grid-template-rows: 1fr auto;
   grid-template-areas:
+    "nav"
     "main"
     "footer";
 }
 
+#root > nav {
+  grid-area: nav;
+}
 #root > main {
   grid-area: main;
 }

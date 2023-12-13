@@ -35,21 +35,23 @@ const Calzones = () => {
   return (
     <>
       <SEOHelmet seoData={seoData} pageSlug={pageSlug} />
-      <div className="page-container cream-color inner-hero">
-        <MenuHeader
-          featuredImage={featuredImage}
-          featuredImageAlt={featuredImageAlt}
-          pageTitle={pageTitle}
-          pageContent={pageContent}
-        />
-        <CategorySelector
-          selectionTitle="Sort Specialty Pizzas"
-          availableTerms={availableTerms}
-          selectedTerm={selectedTerm}
-          handleTermChange={handleTermChange}
-        />
-        <MenuList filteredPosts={filteredPosts} pageSlug={pageSlug} orderHandler={orderHandler} />
-      </div>
+      <section className="viewport innerhero">
+        <div className="page-container cream-color">
+          <MenuHeader
+            featuredImage={featuredImage}
+            featuredImageAlt={featuredImageAlt}
+            pageTitle={pageTitle}
+            pageContent={pageContent}
+          />
+          <CategorySelector
+            selectionTitle="Sort Specialty Pizzas"
+            availableTerms={availableTerms}
+            selectedTerm={selectedTerm}
+            handleTermChange={handleTermChange}
+          />
+          <MenuList filteredPosts={filteredPosts} pageSlug={pageSlug} orderHandler={orderHandler} />
+        </div>
+      </section>
     </>
   );
 };

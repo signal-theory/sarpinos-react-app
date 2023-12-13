@@ -105,8 +105,8 @@ const Home = () => {
   return (
     <>
       <SEOHelmet seoData={seoData} pageSlug={pageSlug} />
-      <section>
-        <div className="page-container homepage-hero">
+      <section className="viewport homepage-hero">
+        <div className="full-page-container">
           <div className="menupage-header responsive-column-container">
             <div className="menupage-image">
               <img src={heroPizzaImg} />
@@ -117,72 +117,80 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="page-container cream-color homepage-items text-align-center" style={{ marginBottom: 0 }}>
-        <h2 style={{ marginTop: '2rem' }}>{popularItemsHeadline}</h2>
-        <div className="menupage-list">
-          {popularMenuItems && popularMenuItems.length > 0 ? (
+      <section className="viewport" style={{ paddingBottom: 0 }}>
+        <div className="page-container cream-color homepage-items text-align-center">
+          <h2 style={{ marginTop: '2rem' }}>{popularItemsHeadline}</h2>
+          <div className="responsive-three-column-container">
+            {popularMenuItems && popularMenuItems.length > 0 ? (
 
-            popularMenuItems.map((post, index) => {
-              const url = new URL(post.link.url);
-              const path = url.pathname;
+              popularMenuItems.map((post, index) => {
+                const url = new URL(post.link.url);
+                const path = url.pathname;
 
-              return (
-                <div key={index} className="menupage-item">
-                  <div className="menupage-thumbnail">
-                    <Link to={path}>
-                      {post.image && (
-                        <LazyLoadImage
-                          src={post.image.source_url}
-                          alt={post.image.alt_text}
-                          effect="blur"
-                          className="mask hover-image"
-                        />
-                      )}
+                return (
+                  <div key={index} className="menupage-item">
+                    <div className="menupage-thumbnail">
+                      <Link to={path}>
+                        {post.image && (
+                          <LazyLoadImage
+                            src={post.image.source_url}
+                            alt={post.image.alt_text}
+                            effect="blur"
+                            className="mask hover-image"
+                          />
+                        )}
 
-                    </Link>
-                  </div>
-                  <div className="menupage-label">
-                    <h3><Link to={path}>{post.title}</Link></h3>
-                    <div className="menupage-caption" dangerouslySetInnerHTML={{ __html: post.description }} />
-                    <Link className="btn primary-btn" to={path}>{post.title}</Link>
-                  </div>
-                </div>)
-            })
-          ) : (
-            <p>No items found.</p>
-          )}
+                      </Link>
+                    </div>
+                    <div className="menupage-label">
+                      <h3><Link to={path}>{post.title}</Link></h3>
+                      <div className="menupage-caption" dangerouslySetInnerHTML={{ __html: post.description }} />
+                      <Link className="btn primary-btn" to={path}>{post.title}</Link>
+                    </div>
+                  </div>)
+              })
+            ) : (
+              <p>No items found.</p>
+            )}
+          </div>
         </div>
       </section>
-      <section className="full-page-container homepage-specials text-align-center" style={{ padding: '7rem 0' }}>
-        <h2>{nationalSpecialsHeadline}</h2>
-        <p style={{ maxWidth: '540px', margin: '0 auto' }}>{nationalSpecialsParagraph}</p>
-        <div className="special-carousel" ref={scrollRef}>
-          {nationalSpecials && nationalSpecials.length > 0 ? (
-            nationalSpecials.map((post, index) => (
-              <div className="carousel-item" key={index}>
-                <div className="item">
-                  <h3 className="item-title" dangerouslySetInnerHTML={{ __html: post.acf.title_of_special }} />
-                  <p>with code</p>
-                  <h3 className="item-code">{post.title.rendered}</h3>
-                </div>
-              </div>
-            ))
-          ) : (
-            <p>No specials found.</p>
-          )}
+      <section className="viewport homepage-specials text-align-center" style={{ padding: '7rem 0' }}>
+        <div className="full-page-container">
+          <h2>{nationalSpecialsHeadline}</h2>
+          <p style={{ maxWidth: '540px', margin: '0 auto' }}>{nationalSpecialsParagraph}</p>
+          <div className="carousel-wrapper">
+            <div className="carousel-container full">
+              <ul className="special-carousel" ref={scrollRef} style={{ gridTemplateColumns: `repeat(${nationalSpecials.length}, 1fr)` }}>
+                {nationalSpecials && nationalSpecials.length > 0 ? (
+                  nationalSpecials.map((post, index) => (
+                    <li className="carousel-item" key={index}>
+                      <div className="item">
+                        <h3 className="item-title" dangerouslySetInnerHTML={{ __html: post.acf.title_of_special }} />
+                        <p>with code</p>
+                        <h3 className="item-code">{post.title.rendered}</h3>
+                      </div>
+                    </li>
+                  ))
+                ) : (
+                  <p>No specials found.</p>
+                )}
+              </ul>
+            </div>
+          </div>
+          <div style={{ margin: '2rem 0' }}>
+            {pages.map((_, i) => (
+              <button
+                className={`carousel-dot ${activePageIndex === i ? 'active' : ''}`}
+                key={i}
+                onClick={() => goTo(i)}
+              />
+            ))}
+          </div>
+          <Link to="/menu/national-specials" className="btn secondary-btn">See More Specials</Link>
         </div>
-        <div style={{ margin: '2rem 0' }}>
-          {pages.map((_, i) => (
-            <button
-              className={`carousel-dot ${activePageIndex === i ? 'active' : ''}`}
-              key={i}
-              onClick={() => goTo(i)}
-            />
-          ))}
-        </div>
-        <Link to="/menu/national-specials" className="btn secondary-btn">See More Specials</Link>
       </section>
-      <section className="full-page-container green-color">
+      <section className="viewport green-color">
         <div className="page-container cream-color">
           <div className="responsive-twothirds-column-container">
             <div>
@@ -201,7 +209,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="full-page-container nighttime-background-color" style={{ paddingTop: 0 }}>
+      <section className="viewport nighttime-background-color" style={{ paddingTop: 0 }}>
         <div className="page-container cream-outline text-align-center">
           <h2 style={{ marginBottom: '3rem' }}>WHY SARPINO'S?</h2>
           <div className="responsive-three-column-container" style={{ margin: '3rem 0' }}>
@@ -220,9 +228,7 @@ const Home = () => {
           </div>
           <Link to="/about/why-sarpinos" className="btn primary-btn">About Us</Link>
         </div>
-      </section>
-      <section className="full-page-container green-color">
-        <div className="page-container text-align-center">
+        <div className="page-container text-align-center" style={{ marginTop: '2rem' }}>
           <h2>Sarpino's On Social</h2>
           <p style={{ maxWidth: '347px', margin: '0 auto' }}>Pizza pics, cheesy captions and saucy posts. Follow us on Instagram and Facebook.</p>
           <div className="social-feed" style={{ margin: '6rem 0' }}>

@@ -1,18 +1,10 @@
-/* menupage header */
-.menupage-header {
-  display: flex;
-  padding: 2rem 0;
+/* menupage-header */
+.menupage-header .content {
+  align-items: flex-start;
 }
+/* menupage-list */
 
-/* menupage post list */
-.menupage-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 400px);
-  grid-auto-rows: auto;
-  grid-gap: 20px;
-  justify-content: center;
-  margin: 0 auto;
-}
+/* menupage-item */
 .menupage-thumbnail a {
   display: block;
   width: 100%;
@@ -39,6 +31,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
 }
 .menupage-label {
   padding: 2rem 0;
@@ -50,6 +43,11 @@
 }
 .menupage-label .menupage-caption {
   flex: 1 1 auto;
+}
+@media screen and (max-width: 767px) {
+  .menupage-label .menupage-caption {
+    text-align: center;
+  }
 }
 .menupage-label button,
 .menupage-label a.primary-btn {

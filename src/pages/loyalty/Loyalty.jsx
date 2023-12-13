@@ -3,9 +3,11 @@ import './Loyalty.css'
 
 export default function Loyalty() {
   return (
-    <div className="page-container">
-      <h1>Loyalty</h1>
-      {/* Add content here */}
-    </div>
+    <section className="viewport innerhero cream-color">
+      <div className="page-container">
+        <h1>Loyalty</h1>
+        {/* Add content here */}
+      </div>
+    </section>
   )
 }

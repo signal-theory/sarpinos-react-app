@@ -55,17 +55,18 @@ const Why = () => {
         <meta property="og:type" content="article" />
         <meta property="og:URL" content={window.location.href} />
       </Helmet>
-
-      <div className="full-page-container inner-hero">
-        <div className="content text-align-center">
-          {pageContent && <div dangerouslySetInnerHTML={{ __html: pageContent }} />}
-        </div>
-        <div className="responsive-column-container">
-          <div className="featured-image">
-            {featuredImage && <img src={featuredImage} alt={featuredImageAlt} />}
+      <section className="viewport innerhero cream-color">
+        <div className="page-container">
+          <div className="content text-align-center">
+            {pageContent && <div dangerouslySetInnerHTML={{ __html: pageContent }} />}
+          </div>
+          <div className="responsive-column-container">
+            <div className="featured-image">
+              {featuredImage && <img src={featuredImage} alt={featuredImageAlt} />}
+            </div>
           </div>
         </div>
-      </div>
+      </section>
     </>
   )
 }

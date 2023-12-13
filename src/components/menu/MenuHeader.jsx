@@ -7,7 +7,7 @@ const MenuHeader = ({ featuredImage, featuredImageAlt, pageTitle, pageContent })
         {featuredImage && <img src={featuredImage} alt={featuredImageAlt} />}
       </div>
       <div className="content flex-align-center">
-        <h1 dangerouslySetInnerHTML={{ __html: pageTitle }} />
+        <h2 dangerouslySetInnerHTML={{ __html: pageTitle }} />
         <div dangerouslySetInnerHTML={{ __html: pageContent }} />
       </div>
     </div>

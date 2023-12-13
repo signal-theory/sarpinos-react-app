@@ -55,14 +55,16 @@ const Specials = () => {
         <meta property="og:type" content="article" />
         <meta property="og:URL" content={window.location.href} />
       </Helmet>
-      <div className="full-page-container specials-page inner-hero">
-        <div className="container text-align-center">
-          <div className="content">
-            {pageTitle && <h1 dangerouslySetInnerHTML={{ __html: pageTitle }} />}
-            {pageContent && <div dangerouslySetInnerHTML={{ __html: pageContent }} />}
+      <section className="viewport innerhero">
+        <div className="full-page-container specials-page">
+          <div className="container text-align-center">
+            <div className="content">
+              {pageTitle && <h1 dangerouslySetInnerHTML={{ __html: pageTitle }} />}
+              {pageContent && <div dangerouslySetInnerHTML={{ __html: pageContent }} />}
+            </div>
           </div>
         </div>
-      </div>
+      </section>
     </>
   )
 }

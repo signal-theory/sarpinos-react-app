@@ -55,16 +55,18 @@ const Company = () => {
         <meta property="og:type" content="article" />
         <meta property="og:URL" content={window.location.href} />
       </Helmet>
-      <div className="full-page-container company-page inner-hero">
-        <div className="responsive-column-container">
-          <div className="featured-image">
-            {featuredImage && <img src={featuredImage} alt={featuredImageAlt} />}
-          </div>
-          <div className="content">
-            {pageContent && <div dangerouslySetInnerHTML={{ __html: pageContent }} />}
+      <section className="viewport innerhero cream-color">
+        <div className="full-page-container company-page inner-hero">
+          <div className="responsive-column-container">
+            <div className="featured-image">
+              {featuredImage && <img src={featuredImage} alt={featuredImageAlt} />}
+            </div>
+            <div className="content">
+              {pageContent && <div dangerouslySetInnerHTML={{ __html: pageContent }} />}
+            </div>
           </div>
         </div>
-      </div>
+      </section>
     </>
   )
 }

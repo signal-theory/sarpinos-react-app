@@ -31,15 +31,17 @@ const BuildYourOwn = () => {
   return (
     <>
       <SEOHelmet seoData={seoData} pageSlug={pageSlug} />
-      <div className="page-container cream-color inner-hero">
-        <MenuHeader
-          featuredImage={featuredImage}
-          featuredImageAlt={featuredImageAlt}
-          pageTitle={pageTitle}
-          pageContent={pageContent}
-        />
-        <MenuList filteredPosts={filteredPosts} pageSlug={pageSlug} orderHandler={orderHandler} />
-      </div>
+      <section className="viewport innerhero">
+        <div className="page-container cream-color">
+          <MenuHeader
+            featuredImage={featuredImage}
+            featuredImageAlt={featuredImageAlt}
+            pageTitle={pageTitle}
+            pageContent={pageContent}
+          />
+          <MenuList filteredPosts={filteredPosts} pageSlug={pageSlug} orderHandler={orderHandler} />
+        </div>
+      </section>
     </>
   );
 };

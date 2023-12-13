@@ -3,7 +3,7 @@ import MenuList_Thumb from './MenuList_Thumb';
 import MenuList_Label from './MenuList_Label';
 
 const MenuList = ({ filteredPosts, pageSlug, orderHandler }) => (
-  <div className="menupage-list">
+  <div className="menupage-list responsive-three-column-container">
     {filteredPosts && filteredPosts.length > 0 ? (
       filteredPosts.map((post, index) => (
         <div key={index} className="menupage-item">

@@ -18,15 +18,17 @@ export default function Blog() {
   }, [])
 
   return (
-    <div className="page-container inner-hero cream-color">
-      <h1>Blog</h1>
-      {posts.map((item) => (
-        <Link key={item.id} to={`/about/blog/${item.slug}`}>
-          <BlogCard
-            post={item}
-          />
-        </Link>
-      ))}
-    </div>
+    <section className="viewport innerhero cream-color">
+      <div className="page-container">
+        <h1>Blog</h1>
+        {posts.map((item) => (
+          <Link key={item.id} to={`/about/blog/${item.slug}`}>
+            <BlogCard
+              post={item}
+            />
+          </Link>
+        ))}
+      </div>
+    </section>
   )
 }

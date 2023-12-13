@@ -3,7 +3,7 @@ import './CategorySelector.css';
 
 const CategorySelector = ({ selectionTitle, availableTerms, selectedTerm, handleTermChange }) => (
   <>
-    <h2 className="text-align-center">{selectionTitle}</h2>
+    <h4 className="text-align-center" style={{ marginTop: '4rem' }}>{selectionTitle}</h4>
     <div className="category-filter">
       {availableTerms.map((option, index) => (
         <button

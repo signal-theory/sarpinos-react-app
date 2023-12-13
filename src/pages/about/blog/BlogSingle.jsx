@@ -33,11 +33,13 @@ const BlogSingle = () => {
   }
 
   return (
-    <div className="page-container">
-      <h1>{post.title.rendered}</h1>
-      {featuredImage && <img src={featuredImage} alt={post.title.rendered} />}
-      <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
-    </div>
+    <section className="viewport innerhero cream-color">
+      <div className="page-container">
+        <h1>{post.title.rendered}</h1>
+        {featuredImage && <img src={featuredImage} alt={post.title.rendered} />}
+        <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
+      </div>
+    </section>
   );
 };
 
