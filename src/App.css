@@ -5,10 +5,10 @@
   padding: 2rem 0;
 }
 .viewport.innerhero {
-  padding-top: calc(78px + 2rem);
+  padding-top: calc(106px + 2rem);
 }
 .viewport.homepage-hero {
-  padding-top: calc(78px + 2rem);
+  padding-top: calc(106px + 2rem);
 }
 .page-container {
   width: calc(90% - 60px);

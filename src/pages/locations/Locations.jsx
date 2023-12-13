@@ -4,7 +4,7 @@ import './Locations.css'
 const Locations = () => {
   return (
     <section className="viewport innerhero">
-      <div className="full-page-container">
+      <div className="page-container">
         <h1>Locations</h1>
         {/* Add content here */}
       </div>

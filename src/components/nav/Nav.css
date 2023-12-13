@@ -10,18 +10,18 @@ nav.main-navigation {
   z-index: 99999;
 }
 
-a {
+nav.main-navigation a {
   color: white;
   text-decoration: none;
   display: inline-block;
   white-space: nowrap;
 }
 
-li.item {
+nav.main-navigation li.item {
   padding: 15px var(--navbar-padding);
 }
 
-li.item.button.heart a::before {
+nav.main-navigation li.item.button.heart a::before {
   content: "";
   display: inline-block;
   width: 12px;
@@ -30,26 +30,26 @@ li.item.button.heart a::before {
   background: url(../../assets/heart-solid.svg) no-repeat center center;
   background-size: contain;
 }
-li.item {
+nav.main-navigation li.item {
   order: 3;
   text-align: center;
 }
-.active.item {
+nav.main-navigation .active.item {
   display: block;
 }
 
 /* Submenu up from mobile screens */
-.submenu {
+nav.main-navigation .submenu {
   display: none;
 }
-.submenu-active .submenu {
+nav.main-navigation .submenu-active .submenu {
   display: block;
 }
-.has-submenu a {
+nav.main-navigation .has-submenu a {
   cursor: pointer;
 }
 
-.has-submenu > a::after {
+nav.main-navigation .has-submenu > a::after {
   content: "";
   display: inline-block;
   height: 10px;
@@ -58,9 +58,9 @@ li.item {
   background: url(../../assets/arrow-right.svg) no-repeat center center;
   background-size: contain;
 }
-.has-submenu > a.active::after {
+nav.main-navigation .has-submenu > a.active::after {
   transform: rotate(90deg);
 }
-.subitem a {
+nav.main-navigation .subitem a {
   padding: 10px 15px;
 }
