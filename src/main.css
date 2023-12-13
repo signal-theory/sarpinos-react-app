@@ -88,6 +88,7 @@ html {
 }
 body {
   margin: 0;
+  overscroll-behavior: none;
 }
 #root {
   /* height: 100vh;
