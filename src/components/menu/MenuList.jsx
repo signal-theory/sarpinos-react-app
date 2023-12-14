@@ -7,8 +7,8 @@ const MenuList = ({ filteredPosts, pageSlug, orderHandler }) => (
     {filteredPosts && filteredPosts.length > 0 ? (
       filteredPosts.map((post, index) => (
         <div key={index} className="menupage-item">
-          <MenuList_Thumb pageSlug={pageSlug} post={post} />
-          <MenuList_Label pageSlug={pageSlug} post={post} orderHandler={orderHandler} />
+          <MenuList_Thumb post={post} />
+          <MenuList_Label post={post} orderHandler={orderHandler} />
         </div>
       ))
     ) : (

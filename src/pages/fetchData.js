@@ -1,4 +1,9 @@
 import axios from "axios";
+const postTypeToPageSlug = {
+  'pizza': 'sarpinos-specialty-pizza',
+  'calzones': 'calzones',
+  // Add more post types and page slugs as needed
+};
 
 export const fetchData = (postTypes, pageId, selectedTerm, setPosts, setFilteredPosts, setPageSlug, setPageTitle, setPageContent, setSeoData, setFeaturedImage, setFeaturedImageAlt) => {
   // Map over the postTypes array and create a promise for each post type
@@ -6,6 +11,8 @@ export const fetchData = (postTypes, pageId, selectedTerm, setPosts, setFiltered
     return axios.get(`https://sarpinos.mysites.io/wp-json/wp/v2/${postType}`)
       .then(response => {
         const fetches = response.data.map(post => {
+          post.postTypeKey = postType; // Add a postTypeKey property to the post object
+          post.pageSlug = postTypeToPageSlug[postType]; // Add a pageSlug property to the post object
           // Fetches for the first image field
           const imageFetch = post.acf.main_image
             ? axios.get(`https://sarpinos.mysites.io/wp-json/wp/v2/media/${post.acf.main_image}`)

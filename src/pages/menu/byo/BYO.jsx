@@ -39,7 +39,9 @@ const BuildYourOwn = () => {
             pageTitle={pageTitle}
             pageContent={pageContent}
           />
-          <MenuList filteredPosts={filteredPosts} pageSlug={pageSlug} orderHandler={orderHandler} />
+          <MenuList
+            filteredPosts={filteredPosts}
+            orderHandler={orderHandler} />
         </div>
       </section>
     </>

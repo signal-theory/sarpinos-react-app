@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
-const MenuList_Thumb = ({ pageSlug, post }) => (
+const MenuList_Thumb = ({ post }) => (
   <div className="menupage-thumbnail">
-    <Link to={`/menu/${pageSlug}/${post.slug}`}>
+    <Link to={`/menu/${post.pageSlug}/${post.slug}`}>
       {post.hoverImageDetails && (
         <LazyLoadImage
           src={post.hoverImageDetails.source_url}

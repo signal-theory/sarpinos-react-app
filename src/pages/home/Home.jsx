@@ -106,7 +106,7 @@ const Home = () => {
     <>
       <SEOHelmet seoData={seoData} pageSlug={pageSlug} />
       <section className="viewport homepage-hero">
-        <div className="full-page-container">
+        <div className="page-container">
           <div className="menupage-header responsive-column-container">
             <div className="menupage-image">
               <img src={heroPizzaImg} />
@@ -142,7 +142,7 @@ const Home = () => {
 
                       </Link>
                     </div>
-                    <div className="menupage-label">
+                    <div className="menupage-label" style={{ alignItems: 'center' }}>
                       <h3><Link to={path}>{post.title}</Link></h3>
                       <div className="menupage-caption" dangerouslySetInnerHTML={{ __html: post.description }} />
                       <Link className="btn primary-btn" to={path}>{post.title}</Link>
