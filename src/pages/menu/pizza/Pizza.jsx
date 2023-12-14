@@ -5,7 +5,7 @@ import '../Menu.css'
 import MenuHeader from '../../../components/menu/MenuHeader'
 import CategorySelector from '../../../components/CategorySelector'
 import MenuList from '../../../components/menu/MenuList'
-
+import { useLocation } from 'react-router-dom';
 
 const Pizza = () => {
   const orderHandler = (title) => console.log('Order', title);
@@ -17,8 +17,12 @@ const Pizza = () => {
   const [pageContent, setPageContent] = useState(null);
   const [pageSlug, setPageSlug] = useState(null);
   const [seoData, setSeoData] = useState({});
-  const [selectedTerm, setSelectedTerm] = useState('Specialty');
-  const availableTerms = ['Specialty', 'Meatless', 'Vegan', 'Popular'];
+
+  const location = useLocation();
+  const urlParams = new URLSearchParams(location.search);
+  const termFromUrl = urlParams.get('selectedTerm');
+  const [selectedTerm, setSelectedTerm] = useState(termFromUrl || 'Specialty');
+  const availableTerms = ['Specialty', 'Meatless', 'Vegan', 'Gluten-Free', 'Popular'];
 
   const pageId = 34; // Page ID
   // Fetch data

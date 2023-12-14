@@ -1,5 +1,6 @@
 @media all and (min-width: 1200px) {
-  .navbar {
+  .navbar,
+  .navbar-dropdowns {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -36,17 +37,50 @@
 
   .navbar-dropdowns {
     position: absolute;
-    top: 110px;
-    width: 100%;
-    max-width: 900px;
+    top: 70px;
+    max-width: 1300px;
     left: 50%;
     transform: translateX(-50%);
+    background-color: transparent; /* override */
+    border-radius: 0; /* override */
+    justify-content: flex-start; /* override */
+    flex-wrap: nowrap; /* override */
+    padding: 0; /* override */
   }
-  .navbar-dropdowns .submenu {
+  .navbar-dropdowns::before {
+    content: "";
+    display: block;
+    width: 199px;
+    height: 51px;
+  }
+  .navbar-dropdowns.locations-active::before {
+    display: none;
+  }
+  .navbar-dropdowns ul.submenu {
     background-color: var(--green-color);
-    border-radius: 20px;
+    border-radius: 32px;
+    padding: var(--navbar-padding);
   }
-  .navbar-dropdowns .submenu.active {
-    display: inline-block;
+  .navbar-dropdowns ul.submenu.menu.active {
+    display: flex;
+  }
+  .navbar-dropdowns ul.submenu.menu.active li.has-submenu.without-thumbs ul {
+    margin: 0.5rem;
+  }
+  .navbar-dropdowns ul.submenu.menu.active li.has-submenu.with-thumbs ul {
+    display: flex;
+    margin: 0.5rem 0.75rem;
+  }
+  .navbar-dropdowns ul.submenu.menu.active li.has-submenu.with-thumbs ul li {
+    display: block;
+  }
+  .navbar-dropdowns ul.submenu.menu.active li.has-submenu.with-thumbs ul li a {
+    padding: var(--navbar-padding) calc(var(--navbar-padding) / 1.25);
+  }
+  .navbar-dropdowns img.featured-image {
+    width: 191px;
+    height: 143px;
+    object-fit: cover;
+    border-radius: 5px;
   }
 }
