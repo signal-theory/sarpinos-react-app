@@ -1,23 +1,28 @@
 import React, { useEffect, useState } from 'react'
 import './Why.css'
 import axios from 'axios'
-import { Helmet } from 'react-helmet-async'
+import SEOHelmet from '../../../components/SEOHelmet'
+import Loading from '../../../components/Loading'
 
 const Why = () => {
 
   const [featuredImage, setFeaturedImage] = useState(null);
   const [featuredImageAlt, setFeaturedImageAlt] = useState(null);
+  const [pageSlug, setPageSlug] = useState(null);
   const [pageTitle, setPageTitle] = useState(null);
   const [pageContent, setPageContent] = useState(null);
   const [seoData, setSeoData] = useState({});
 
+  const [isLoading, setIsLoading] = useState(true);
   const pageId = 60;
   // Fetch Page content, Featured image, and SEO data
   useEffect(() => {
+    setIsLoading(true);
     axios.get(`https://sarpinos.mysites.io/wp-json/wp/v2/pages/${pageId}`)
       .then(response => {
         const post = response.data; // Get the post data
 
+        setPageSlug(post.slug);
         setPageTitle(post.title.rendered); // Set the page title
         setPageContent(post.content.rendered); // Set the page content
 
@@ -37,6 +42,7 @@ const Why = () => {
             });
         }
 
+        setIsLoading(false);
       })
       .catch(error => {
         console.error(error);
@@ -45,16 +51,12 @@ const Why = () => {
       });
   }, [pageId]);
 
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <>
-      <Helmet>
-        {seoData && seoData.og_title && <title>{seoData.og_title}</title>}
-        {seoData && seoData.og_description && <meta name="description" content={seoData.og_description} />}
-        {seoData && seoData.og_image && seoData.og_image[0] && seoData.og_image[0].url && <meta property="og:image" content={seoData.og_image[0].url} />}
-        {seoData && seoData.og_site_name && <meta name="site_name" content={seoData.og_site_name} />}
-        <meta property="og:type" content="article" />
-        <meta property="og:URL" content={window.location.href} />
-      </Helmet>
+      <SEOHelmet seoData={seoData} pageSlug={pageSlug} />
       <section className="viewport innerhero cream-color">
         <div className="page-container">
           <div className="content text-align-center">

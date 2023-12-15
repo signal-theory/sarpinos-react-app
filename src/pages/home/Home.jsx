@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import SEOHelmet from '../../components/SEOHelmet'
+import Loading from '../../components/Loading'
 import './Home.css'
 import '../menu/specials/Specials.css'
 import { Link } from 'react-router-dom';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import heroPizzaImg from '../../assets/homepage-hero-pizza.png'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { useSnapCarousel } from 'react-snap-carousel';
-import { Car } from '../../components/svgs/drawing-car';
-import { Moon } from '../../components/svgs/drawing-moon';
-import { Calendar } from '../../components/svgs/drawing-calendar';
+
+import heroPizzaImg from '../../assets/pizza.png'
+import onionsImg from '../../assets/onions-sliced.png'
+import heartGreenOutlineImg from '../../assets/heart-green-outline.svg'
+
+import { Car } from '../../components/svgs/drawing-car'
+import { Moon } from '../../components/svgs/drawing-moon'
+import { Calendar } from '../../components/svgs/drawing-calendar'
 
 
 
@@ -99,17 +104,19 @@ const Home = () => {
   }, []);
 
   if (isLoading) {
-    return <div className="flex-align-center" style={{ height: '100vh' }}>Loading...</div>;
+    return <Loading />;
   }
 
   return (
     <>
       <SEOHelmet seoData={seoData} pageSlug={pageSlug} />
-      <section className="viewport homepage-hero">
+      <section className="homepage-hero">
         <div className="page-container">
           <div className="menupage-header responsive-column-container">
-            <div className="menupage-image">
-              <img src={heroPizzaImg} />
+            <div className="homepage-pizza-animation">
+              <img className="pizza" src={heroPizzaImg} />
+              <img className="onions" src={onionsImg} />
+              <img className="heart-green-outline" src={heartGreenOutlineImg} />
             </div>
             <div className="content text-align-center flex-align-center">
               <div dangerouslySetInnerHTML={{ __html: pageContent }} />
@@ -145,7 +152,7 @@ const Home = () => {
                     <div className="menupage-label" style={{ alignItems: 'center' }}>
                       <h3><Link to={path}>{post.title}</Link></h3>
                       <div className="menupage-caption" dangerouslySetInnerHTML={{ __html: post.description }} />
-                      <Link className="btn primary-btn" to={path}>{post.title}</Link>
+                      <Link className="btn primary-btn" to={path}><span>{post.title}</span></Link>
                     </div>
                   </div>)
               })
@@ -155,7 +162,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="viewport homepage-specials text-align-center" style={{ padding: '7rem 0' }}>
+      <section className="viewport red-color homepage-specials text-align-center" style={{ padding: '7rem 0' }}>
         <div className="full-page-container">
           <h2>{nationalSpecialsHeadline}</h2>
           <p style={{ maxWidth: '540px', margin: '0 auto' }}>{nationalSpecialsParagraph}</p>
@@ -187,7 +194,7 @@ const Home = () => {
               />
             ))}
           </div>
-          <Link to="/menu/national-specials" className="btn secondary-btn">See More Specials</Link>
+          <Link to="/menu/national-specials" className="btn secondary-btn"><span>See More Specials</span></Link>
         </div>
       </section>
       <section className="viewport green-color">
@@ -204,7 +211,7 @@ const Home = () => {
             <div className="content flex-align-center" style={{ alignItems: 'flex-start' }}>
               <h2>{cateringSectionHeadline}</h2>
               <p>{cateringSectionParagraph}</p>
-              <Link to="/catering" className="btn primary-btn" style={{ marginBottom: '4rem' }}>Catering Info</Link>
+              <Link to="/catering" className="btn primary-btn" style={{ marginBottom: '4rem' }}><span>Catering Info</span></Link>
             </div>
           </div>
         </div>
@@ -226,7 +233,7 @@ const Home = () => {
               <h2 style={{ padding: '2rem 0' }}>Open <br />365 Days</h2>
             </div>
           </div>
-          <Link to="/about/why-sarpinos" className="btn primary-btn">About Us</Link>
+          <Link to="/about/why-sarpinos" className="btn primary-btn"><span>About Us</span></Link>
         </div>
         <div className="page-container text-align-center" style={{ marginTop: '2rem' }}>
           <h2>Sarpino's On Social</h2>

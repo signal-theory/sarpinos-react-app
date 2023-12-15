@@ -2,9 +2,11 @@ import React from 'react';
 import MenuList_Thumb from './MenuList_Thumb';
 import MenuList_Label from './MenuList_Label';
 
-const MenuList = ({ filteredPosts, pageSlug, orderHandler }) => (
+const MenuList = ({ filteredPosts, orderHandler, loading }) => (
   <div className="menupage-list responsive-three-column-container">
-    {filteredPosts && filteredPosts.length > 0 ? (
+    {loading ? (
+      <p>Loading...</p>
+    ) : filteredPosts && filteredPosts.length > 0 ? (
       filteredPosts.map((post, index) => (
         <div key={index} className="menupage-item">
           <MenuList_Thumb post={post} />

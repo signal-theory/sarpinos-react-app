@@ -111,8 +111,8 @@ function NavDesktop() {
           <li className="item button heart">
             <a href="/loyalty">Loyalty Sign-In</a>
           </li>
-          <li className="item button primary-btn">
-            <a href="">Order Now</a>
+          <li className="item button">
+            <a href="" className=" btn primary-btn"><span>Order Now</span></a>
           </li>
         </ul>
       </div>
@@ -138,15 +138,15 @@ function NavDesktop() {
                   {featuredImages[34] && (
                     <img className="featured-image" src={featuredImages[34].url} alt={featuredImages[34].alt} />
                   )}
-                  Full Menu
+                  Specialty Pizza
                 </Link>
               </li>
               <li className="subitem">
-                <Link to="/menu/vegan-menu" onClick={() => handleSubmenu('Menu')}>
+                <Link to="/menu/sarpinos-specialty-pizza?selectedTerm=Vegan" onClick={() => handleSubmenu('Menu')}>
                   {featuredImages[170] && (
                     <img className="featured-image" src={featuredImages[170].url} alt={featuredImages[170].alt} />
                   )}
-                  Vegan Menu
+                  Vegan Pizza
                 </Link>
               </li>
             </ul>
@@ -154,7 +154,7 @@ function NavDesktop() {
           <li className="subitem has-submenu without-thumbs">
             <ul>
               <li className="subitem"><Link to="/menu/sarpinos-specialty-pizza" onClick={() => handleSubmenu('Menu')}>Full Menu</Link></li>
-              <li className="subitem"><Link to="/menu/sarpinos-specialty-pizza?selectedTerm=Vegan" onClick={() => handleSubmenu('Menu')}>Vegan Menu</Link></li>
+              <li className="subitem"><Link to="/menu/vegan-menu" onClick={() => handleSubmenu('Menu')}>Vegan Menu</Link></li>
               <li className="subitem"><Link to="/menu/sarpinos-specialty-pizza?selectedTerm=Gluten Free" onClick={() => handleSubmenu('Menu')}>Gluten-Free Menu</Link></li>
               <li className="subitem"><Link to="/menu/national-specials" onClick={() => handleSubmenu('Menu')}>Specials & Promotions</Link></li>
             </ul>

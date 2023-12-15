@@ -21,13 +21,19 @@ const Pizza = () => {
   const location = useLocation();
   const urlParams = new URLSearchParams(location.search);
   const termFromUrl = urlParams.get('selectedTerm');
+
   const [selectedTerm, setSelectedTerm] = useState(termFromUrl || 'Specialty');
   const availableTerms = ['Specialty', 'Meatless', 'Vegan', 'Gluten-Free', 'Popular'];
+  const [loading, setLoading] = useState();
 
   const pageId = 34; // Page ID
   // Fetch data
   useEffect(() => {
-    fetchData(['pizza'], pageId, selectedTerm, setPosts, setFilteredPosts, setPageSlug, setPageTitle, setPageContent, setSeoData, setFeaturedImage, setFeaturedImageAlt);
+    setLoading(true); // Start loading
+    fetchData(['pizza'], pageId, selectedTerm, setPosts, setFilteredPosts, setPageSlug, setPageTitle, setPageContent, setSeoData, setFeaturedImage, setFeaturedImageAlt)
+      .then(() => {
+        setLoading(false); // End loading after data has been fetched and processed
+      });
   }, [pageId, selectedTerm]);
 
   if (!posts) {
@@ -36,6 +42,10 @@ const Pizza = () => {
   const handleTermChange = (event) => {
     setSelectedTerm(event.target.value);
   };
+
+  useEffect(() => {
+    setSelectedTerm(termFromUrl || 'Specialty');
+  }, [location]);
 
   return (
     <>
@@ -54,7 +64,11 @@ const Pizza = () => {
             selectedTerm={selectedTerm}
             handleTermChange={handleTermChange}
           />
-          <MenuList filteredPosts={filteredPosts} pageSlug={pageSlug} orderHandler={orderHandler} />
+          <MenuList
+            filteredPosts={filteredPosts}
+            pageSlug={pageSlug}
+            orderHandler={orderHandler}
+            loading={loading} />
         </div>
       </section>
     </>

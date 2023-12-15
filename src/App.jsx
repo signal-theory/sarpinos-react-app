@@ -8,6 +8,7 @@ import Blog from './pages/about/blog/Blog'
 import BlogSingle from './pages/about/blog/BlogSingle'
 import Why from './pages/about/why/Why'
 import BYO from './pages/menu/byo/BYO'
+import VeganMenu from './pages/menu/vegan/VeganMenu'
 import Pizza from './pages/menu/pizza/Pizza'
 import PizzaItem from './pages/menu/pizza/PizzaItem'
 import Calzones from './pages/menu/calzones/Calzones'
@@ -40,6 +41,7 @@ export default function App() {
             <Route path="/about/why-sarpinos" element={<Why />} />
             <Route path="/about/blog/:slug" element={<BlogSingle />} />
             <Route path="/menu/build-your-own" element={<BYO />} />
+            <Route path="/menu/vegan-menu" element={<VeganMenu />} />
             <Route path="/menu/sarpinos-specialty-pizza" element={<Pizza />} />
             <Route path="/menu/sarpinos-specialty-pizza/:slug" element={<PizzaItem />} />
             <Route path="/menu/calzones" element={<Calzones />} />

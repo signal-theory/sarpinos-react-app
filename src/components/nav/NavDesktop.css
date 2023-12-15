@@ -34,6 +34,14 @@
   ul.desktopmenu li.item {
     padding: 15px calc(var(--navbar-padding) * 2);
   }
+  ul.desktoplinks {
+    align-items: center;
+  }
+  ul.desktoplinks li.button {
+    display: flex;
+    align-items: center;
+    padding: 0 var(--navbar-padding);
+  }
 
   .navbar-dropdowns {
     position: absolute;

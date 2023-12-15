@@ -1,3 +1,11 @@
+.homepage-hero {
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  z-index: 0;
+  padding-top: calc(106px + 2rem);
+}
+
 .homepage-hero h2 {
   font-family: museo-slab, serif;
   font-weight: 700;
@@ -10,4 +18,29 @@
   background-image: url("../../assets/homepage-bkg-illustrations-black.png");
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+/*pizza animation */
+.homepage-pizza-animation {
+  position: relative;
+}
+.pizza {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: auto;
+}
+.onions {
+  position: absolute;
+  top: 8%;
+  left: -2%;
+  width: 33%;
+}
+
+.heart-green-outline {
+  position: absolute;
+  top: 18%;
+  left: -8%;
+  width: 9%;
 }

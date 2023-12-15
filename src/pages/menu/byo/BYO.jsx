@@ -17,11 +17,16 @@ const BuildYourOwn = () => {
   const [pageSlug, setPageSlug] = useState(null);
   const [seoData, setSeoData] = useState({});
   const selectedTerm = '';
+  const [loading, setLoading] = useState();
 
   const pageId = 91; // Page ID
   // Fetch data
   useEffect(() => {
-    fetchData(['pizza', 'calzones'], pageId, selectedTerm, setPosts, setFilteredPosts, setPageSlug, setPageTitle, setPageContent, setSeoData, setFeaturedImage, setFeaturedImageAlt);
+    setLoading(true); // Start loading
+    fetchData(['pizza', 'calzones'], pageId, selectedTerm, setPosts, setFilteredPosts, setPageSlug, setPageTitle, setPageContent, setSeoData, setFeaturedImage, setFeaturedImageAlt)
+      .then(() => {
+        setLoading(false); // End loading after data has been fetched and processed
+      });
   }, [pageId, selectedTerm]);
 
   if (!posts) {
@@ -41,7 +46,8 @@ const BuildYourOwn = () => {
           />
           <MenuList
             filteredPosts={filteredPosts}
-            orderHandler={orderHandler} />
+            orderHandler={orderHandler}
+            loading={loading} />
         </div>
       </section>
     </>

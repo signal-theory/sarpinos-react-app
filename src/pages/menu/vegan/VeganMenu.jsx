@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import SEOHelmet from '../../../components/SEOHelmet'
-import { fetchData } from '../../fetchData'
+import { fetchData } from '../../fetchData';
 import '../Menu.css'
 import MenuHeader from '../../../components/menu/MenuHeader'
-import CategorySelector from '../../../components/CategorySelector'
 import MenuList from '../../../components/menu/MenuList'
 
 
-const Calzones = () => {
+const VeganMenu = () => {
   const orderHandler = (title) => console.log('Order', title);
   const [posts, setPosts] = useState([]);
   const [filteredPosts, setFilteredPosts] = useState([]);
@@ -17,15 +16,14 @@ const Calzones = () => {
   const [pageContent, setPageContent] = useState(null);
   const [pageSlug, setPageSlug] = useState(null);
   const [seoData, setSeoData] = useState({});
-  const [selectedTerm, setSelectedTerm] = useState('All Calzones');
-  const availableTerms = ['All Calzones', 'Meatless', 'Vegan', 'Sweet', 'Popular'];
+  const selectedTerm = 'Vegan';
   const [loading, setLoading] = useState();
 
-  const pageId = 94; // Page ID
+  const pageId = 170; // Page ID
   // Fetch data
   useEffect(() => {
     setLoading(true); // Start loading
-    fetchData(['calzones'], pageId, selectedTerm, setPosts, setFilteredPosts, setPageSlug, setPageTitle, setPageContent, setSeoData, setFeaturedImage, setFeaturedImageAlt)
+    fetchData(['pizza', 'calzones'], pageId, selectedTerm, setPosts, setFilteredPosts, setPageSlug, setPageTitle, setPageContent, setSeoData, setFeaturedImage, setFeaturedImageAlt)
       .then(() => {
         setLoading(false); // End loading after data has been fetched and processed
       });
@@ -34,9 +32,7 @@ const Calzones = () => {
   if (!posts) {
     return <div>Loading...</div>;
   }
-  const handleTermChange = (event) => {
-    setSelectedTerm(event.target.value);
-  };
+
   return (
     <>
       <SEOHelmet seoData={seoData} pageSlug={pageSlug} />
@@ -48,15 +44,8 @@ const Calzones = () => {
             pageTitle={pageTitle}
             pageContent={pageContent}
           />
-          <CategorySelector
-            selectionTitle="Sort Specialty Pizzas"
-            availableTerms={availableTerms}
-            selectedTerm={selectedTerm}
-            handleTermChange={handleTermChange}
-          />
           <MenuList
             filteredPosts={filteredPosts}
-            pageSlug={pageSlug}
             orderHandler={orderHandler}
             loading={loading} />
         </div>
@@ -65,4 +54,4 @@ const Calzones = () => {
   );
 };
 
-export default Calzones;
+export default VeganMenu;

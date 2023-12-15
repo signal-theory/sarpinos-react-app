@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 //import './Specials.css'
 import axios from 'axios'
-import { Helmet } from 'react-helmet-async'
+import SEOHelmet from '../../../components/SEOHelmet'
 
 const Specials = () => {
 
@@ -9,6 +9,7 @@ const Specials = () => {
   const [featuredImageAlt, setFeaturedImageAlt] = useState(null);
   const [pageTitle, setPageTitle] = useState(null);
   const [pageContent, setPageContent] = useState(null);
+  const [pageSlug, setPageSlug] = useState(null);
   const [seoData, setSeoData] = useState({});
 
   const pageId = 88;
@@ -47,14 +48,7 @@ const Specials = () => {
 
   return (
     <>
-      <Helmet>
-        {seoData && seoData.og_title && <title>{seoData.og_title}</title>}
-        {seoData && seoData.og_description && <meta name="description" content={seoData.og_description} />}
-        {seoData && seoData.og_image && seoData.og_image[0] && seoData.og_image[0].url && <meta property="og:image" content={seoData.og_image[0].url} />}
-        {seoData && seoData.og_site_name && <meta name="site_name" content={seoData.og_site_name} />}
-        <meta property="og:type" content="article" />
-        <meta property="og:URL" content={window.location.href} />
-      </Helmet>
+      <SEOHelmet seoData={seoData} pageSlug={pageSlug} />
       <section className="viewport innerhero">
         <div className="full-page-container specials-page">
           <div className="container text-align-center">

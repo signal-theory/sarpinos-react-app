@@ -1,4 +1,5 @@
 .viewport {
+  position: relative;
   width: 100%;
   overflow: hidden;
   margin: 0 auto;
@@ -7,8 +8,8 @@
 .viewport.innerhero {
   padding-top: calc(106px + 2rem);
 }
-.viewport.homepage-hero {
-  padding-top: calc(106px + 2rem);
+.viewport.fullhero {
+  padding: 0;
 }
 .page-container {
   width: calc(90% - 60px);
@@ -124,17 +125,19 @@ h6 {
 /* HTML elements */
 button,
 a.btn {
+  display: inline-block;
   border-radius: 2rem;
   border: 2px solid #ffffff;
-  padding: 0.8em 1.2em 0.5em;
-  line-height: 1;
+  padding: 1.5em 1.5em 1.3em;
+  line-height: 0;
   font-size: 0.875em;
   font-weight: 500;
   font-family: nexa-rust-sans-black-2, sans-serif;
   color: #ffffff;
   cursor: pointer;
-  transition: border-color 0.25s;
+  overflow: hidden;
 }
+
 button,
 a.primary-btn {
   background-color: var(--red-color);
@@ -142,6 +145,62 @@ a.primary-btn {
 a.secondary-btn {
   background-color: var(--green-color);
 }
+button span,
+a.btn span {
+  position: relative;
+  display: block;
+  animation: btn-roll-out 0.3s forwards;
+}
+button:hover span,
+a.btn:hover span {
+  animation: btn-roll 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+@keyframes btn-roll {
+  0% {
+    top: 0;
+    opacity: 1;
+  }
+  59% {
+    top: 40px;
+    opacity: 1;
+  }
+  60% {
+    top: 40px;
+    opacity: 0;
+  }
+  61% {
+    top: -40px;
+    opacity: 0;
+  }
+  100% {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes btn-roll-out {
+  0% {
+    top: 0;
+    opacity: 1;
+  }
+  59% {
+    top: -40px;
+    opacity: 1;
+  }
+  60% {
+    top: -40px;
+    opacity: 0;
+  }
+  61% {
+    top: 40px;
+    opacity: 0;
+  }
+  100% {
+    top: 0;
+    opacity: 1;
+  }
+}
+
 img {
   display: block;
   max-width: 100%;
