@@ -23,6 +23,7 @@
     var(--green-color) 0px,
     var(--lightgreen-color) 800px
   );
+
   background-color: var(--bkg-color);
   /* background: var(--bkg-redGradient); 
   background-repeat: no-repeat;

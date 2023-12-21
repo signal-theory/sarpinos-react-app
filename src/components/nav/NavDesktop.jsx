@@ -112,7 +112,7 @@ function NavDesktop() {
             <a href="/loyalty">Loyalty Sign-In</a>
           </li>
           <li className="item button">
-            <a href="" className=" btn primary-btn"><span>Order Now</span></a>
+            <a href="" className=" btn primary-btn glow"><span>Order Now</span></a>
           </li>
         </ul>
       </div>

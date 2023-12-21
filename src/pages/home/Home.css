@@ -1,46 +1,295 @@
 .homepage-hero {
-  height: 100vh;
   position: sticky;
   top: 0;
   z-index: 0;
-  padding-top: calc(106px + 2rem);
+  padding-top: calc(132px + 2rem);
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+.homepage-hero .hero-container {
+  width: 100%;
+  max-width: 1400px;
+  padding: 0;
+  position: relative;
 }
 
 .homepage-hero h2 {
   font-family: museo-slab, serif;
   font-weight: 700;
+  font-size: clamp(1.25rem, 3.5vw, 1.5rem);
 }
 
+.homepage-content {
+  position: relative;
+  text-align: center;
+  max-width: 400px;
+  margin: 0 auto;
+  padding-top: 290px;
+  padding-bottom: 2rem;
+}
+@media screen and (min-width: 660px) {
+  .homepage-content {
+    padding-top: 80vw;
+  }
+}
+/*pizza animation */
+.homepage-pizza-animation {
+  position: absolute;
+  width: 100%;
+  max-width: 650px;
+  padding-top: 100%;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+@media screen and (min-width: 660px) {
+  .homepage-pizza-animation {
+    padding-top: 0;
+    height: 650px;
+  }
+}
+@media screen and (min-width: 660px) {
+  .homepage-content {
+    padding-top: 550px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .homepage-hero {
+    height: calc(60vh - (132px + 2rem) + 15vw);
+  }
+  .homepage-pizza-animation {
+    width: 50%;
+    left: 8%;
+    transform: translate(0, 0);
+    padding-top: 50%;
+    height: auto;
+  }
+  .homepage-content {
+    padding-top: 0;
+    width: 50%;
+    margin: 0;
+    left: 58%;
+  }
+  .homepage-items {
+    position: relative;
+  }
+}
+
+@media screen and (min-width: 1315px) {
+  .homepage-pizza-animation {
+    padding-top: 0;
+    height: 650px;
+  }
+}
+
+.homepage-pizza-animation img {
+  position: absolute;
+}
+
+.olives {
+  top: 9%;
+  left: 81%;
+  width: 18.5%;
+  animation: pizza-wobble-sweep 5.5s ease-in-out infinite;
+}
+.tomatoes-cut {
+  top: 56%;
+  left: 93%;
+  width: 20%;
+  animation: pizza-wobble 5s ease-in-out infinite;
+}
+.garlic-bulb {
+  top: 71%;
+  left: 66%;
+  width: 18%;
+  animation: pizza-slide 4s cubic-bezier(0.25, 0.79, 0.25, 0.79) infinite;
+}
+.pizza {
+  width: 100%;
+  top: 2%;
+  left: -4%;
+  height: auto;
+  animation: pizza-rotate 9s ease-in-out infinite;
+}
+.onions {
+  top: 4%;
+  left: 3%;
+  width: 33%;
+  animation: pizza-wobble 6s ease-in-out infinite;
+}
+.heart-green-outline-1 {
+  top: 17%;
+  left: 1%;
+  width: 10%;
+  animation: pizza-heartbeat-rotate 8s ease-in-out infinite;
+}
+.peppercorns {
+  top: -4%;
+  left: 31%;
+  width: 9%;
+  animation: pizza-triangle-rotate 6s ease-in-out infinite;
+}
+.heart-tan-outline {
+  top: -4%;
+  left: 60%;
+  width: 9%;
+  animation: pizza-heartbeat-rotate 6s ease-in-out infinite;
+}
+.tomatoes-fresh-cut {
+  top: -6%;
+  left: 70%;
+  width: 23%;
+  animation: pizza-triangle-rotate 5s ease-in-out infinite;
+}
+.heart-green-fill {
+  top: 6%;
+  left: 68%;
+  width: 10%;
+  animation: pizza-heartbeat-pulse 1s cubic-bezier(0.25, 0.79, 0.25, 0.79)
+    infinite;
+}
+.basil-leaf-1 {
+  top: 32%;
+  left: 77.5%;
+  width: 24%;
+  animation: pizza-triangle-rotate 9s ease-in-out infinite;
+}
+.heart-green-outline-2 {
+  top: 69%;
+  left: 80%;
+  width: 8%;
+  animation: pizza-heartbeat-rotate 11s ease-in-out infinite;
+}
+.tomato-whole-and-slice {
+  top: 46%;
+  left: -6%;
+  width: 28%;
+  animation: pizza-wobble-sweep 7.5s ease-in-out infinite;
+}
+.basil-leaf-2 {
+  top: 45%;
+  left: 4%;
+  width: 21%;
+  animation: pizza-slide 8s ease-in-out infinite;
+}
+.basil-leaf-3 {
+  top: 63.5%;
+  left: 12.25%;
+  width: 23%;
+  animation: pizza-triangle-rotate 5s ease-in-out infinite;
+}
+
+.heart-solid {
+  top: 6%;
+  left: 65%;
+  width: 11%;
+}
+
+/* popular menu items */
 .homepage-items .menupage-thumbnail span:first-of-type {
   position: relative;
 }
+/* national specials */
 .homepage-specials {
   background-image: url("../../assets/homepage-bkg-illustrations-black.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
-
-/*pizza animation */
-.homepage-pizza-animation {
-  position: relative;
+/* carousel */
+.carousel-wrapper {
+  display: grid;
+  align-content: start;
 }
-.pizza {
+.carousel-container {
+  overflow-y: hidden;
+  margin-bottom: calc(-0.1 * var(--gutter));
+}
+.special-carousel {
+  position: relative;
+  margin: 2rem auto 0;
+  padding: 0;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  box-sizing: border-box;
+
+  display: grid;
+  grid-gap: calc(var(--gutter) / 2);
+  /* grid-template-columns: DYNAMIC */
+  grid-template-rows: minmax(150px, 1fr);
+
+  overflow-x: scroll;
+  scroll-snap-type: x proximity;
+  padding-bottom: calc(0.75 * var(--gutter));
+  margin-bottom: calc(-0.5 * var(--gutter));
+}
+@media screen and (min-width: 1200px) {
+  .special-carousel {
+    max-width: calc(1200px + var(--gutter));
+  }
+}
+.special-carousel::-webkit-scrollbar {
+  display: none;
+}
+.carousel-item {
+  position: relative;
+  overflow: hidden;
+  width: calc(400px - ((var(--gutter) / 2 * 1.5) * 2));
+  height: calc(400px - ((var(--gutter) / 2 * 1.5) * 2));
+  scroll-snap-align: start;
+  padding: calc(var(--gutter) / 2 * 1.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+
+  /* background: url(../../assets/circle-outline-1.svg) center no-repeat;
+  background-size: contain;
+  box-sizing: border-box; */
+}
+.carousel-item .specials-bkg {
   position: absolute;
   width: 100%;
-  top: 0;
-  left: 0;
-  height: auto;
+  height: 100%;
+  display: block;
+  animation: circle-rotate 20s linear infinite;
 }
-.onions {
-  position: absolute;
-  top: 8%;
-  left: -2%;
-  width: 33%;
+.carousel-item:nth-of-type(2) .specials-bkg {
+  animation: circle-rotate 28s linear infinite;
+}
+.carousel-item:nth-of-type(3) .specials-bkg {
+  animation: circle-rotate 24s linear infinite;
 }
 
-.heart-green-outline {
-  position: absolute;
-  top: 18%;
-  left: -8%;
-  width: 9%;
+@keyframes circle-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
+}
+.carousel-item .item {
+  position: relative;
+  padding: 0 4rem;
+  color: var(--red-color);
+}
+
+.carousel-item .item .item-title {
+  color: var(--red-color);
+  margin: 0;
+}
+.carousel-item .item .item-code {
+  color: var(--green-color);
+}
+.carousel-dot {
+  width: 14px;
+  height: 14px;
+  padding: 0;
+  margin: 10px;
+  border: none;
+  background-color: #ffffff;
+}
+.carousel-dot.active {
+  background-color: var(--green-color);
 }
