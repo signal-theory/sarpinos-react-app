@@ -44,6 +44,7 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const pageId = 149; // Page ID
+  const [pageTitle, setPageTitle] = useState(null);
   const [pageContent, setPageContent] = useState(null);
   const [pageSlug, setPageSlug] = useState(null);
   const [seoData, setSeoData] = useState({});
@@ -64,6 +65,7 @@ const Home = () => {
     const response = await axios.get(`https://sarpinos.mysites.io/wp-json/wp/v2/pages/${pageId}`);
 
     setPageSlug(response.data.slug); // Set the page slug
+    setPageTitle(response.data.title.rendered); // Set the page title
     setPageContent(response.data.content.rendered); // Set the page content
     setPopularItemsHeadline(response.data.acf.popular_items_headline); // Set the popular items headline
     setNationalSpecialsHeadline(response.data.acf.national_specials_headline); // Set the national specials headline
@@ -75,11 +77,16 @@ const Home = () => {
     const popularMenuItemsWithImages = await Promise.all(
       response.data.acf.popular_menu_items.map(async (item) => {
         const imageResponse = await axios.get(`https://sarpinos.mysites.io/wp-json/wp/v2/media/${item.image}`);
+        const hoverImageResponse = await axios.get(`https://sarpinos.mysites.io/wp-json/wp/v2/media/${item.hover_image}`);
         return {
           ...item,
           image: {
             source_url: imageResponse.data.source_url,
             alt_text: imageResponse.data.alt_text,
+          },
+          hover_image: {
+            source_url: hoverImageResponse.data.source_url,
+            alt_text: hoverImageResponse.data.alt_text,
           },
         };
       })
@@ -145,10 +152,8 @@ const Home = () => {
             <img className="basil-leaf-3" src={basilImg_3} />
           </div>
           <div className="homepage-content">
-            <Fade direction="up" cascade>
-              <div dangerouslySetInnerHTML={{ __html: pageContent }} style={{ margin: '4rem auto 2rem' }} />
-              <Link to="" className="btn tertiary-btn glow"><span>Order Online</span></Link>
-            </Fade>
+            <div dangerouslySetInnerHTML={{ __html: pageContent }} style={{ margin: '4rem 0 2rem' }} />
+            <Link to="" className="btn tertiary-btn glow"><span>Order Online</span></Link>
           </div>
         </div>
       </section>
@@ -166,15 +171,22 @@ const Home = () => {
                   <div key={index} className="menupage-item">
                     <div className="menupage-thumbnail">
                       <Link to={path}>
+                        {post.hover_image && (
+                          <LazyLoadImage
+                            src={post.hover_image.source_url}
+                            alt={post.hover_image.alt_text}
+                            effect="blur"
+                            className="mask hover-image"
+                          />
+                        )}
                         {post.image && (
                           <LazyLoadImage
                             src={post.image.source_url}
                             alt={post.image.alt_text}
                             effect="blur"
-                            className="mask hover-image"
+                            className="mask main-image"
                           />
                         )}
-
                       </Link>
                     </div>
                     <div className="menupage-label" style={{ alignItems: 'center' }}>

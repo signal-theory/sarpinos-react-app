@@ -19,6 +19,7 @@ import Locations from './pages/locations/Locations'
 import Loyalty from './pages/loyalty/Loyalty'
 import { LazyLoadComponent } from 'react-lazy-load-image-component'
 import './App.css'
+import './Animate.css'
 import WebFont from 'webfontloader';
 
 
