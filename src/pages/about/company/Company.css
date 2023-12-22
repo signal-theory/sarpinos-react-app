@@ -1,0 +1,51 @@
+.company-page.inner-hero {
+  margin: 3rem 0;
+}
+.basil-animation {
+  position: relative;
+}
+.basil-animation img.parallax {
+  position: absolute;
+}
+
+.basil-animation img.basil-leaf-1 {
+  top: -24%;
+  left: 33.5%;
+  width: 34%;
+}
+
+.basil-animation img.basil-leaf-2 {
+  top: 2%;
+  left: 15%;
+  width: 26%;
+}
+.basil-animation img.basil-leaf-3 {
+  top: 20%;
+  left: 39%;
+  width: 31%;
+}
+.basil-animation img.basil-leaf-4 {
+  top: 19%;
+  left: 58%;
+  width: 34%;
+}
+.basil-animation img.basil-leaf-5 {
+  top: 28%;
+  left: 1.5%;
+  width: 36%;
+  transform: scaleX(-1);
+}
+.basil-animation img.basil-leaf-6 {
+  top: 13%;
+  left: -4%;
+  width: 25%;
+  transform: scaleX(-1);
+}
+.gourmet-specials {
+  background-image: url("../../../assets/homepage-bkg-illustrations-black.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.gourmet-specials h3 {
+  margin: 2rem 0 1rem;
+}

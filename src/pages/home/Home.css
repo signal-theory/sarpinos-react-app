@@ -108,100 +108,100 @@
   position: absolute;
 }
 
-.olives {
+.homepage-pizza-animation .olives {
   top: 9%;
   left: 81%;
   width: 18.5%;
   animation: pizza-wobble-sweep 5.5s ease-in-out infinite;
 }
-.tomatoes-cut {
+.homepage-pizza-animation .tomatoes-cut {
   top: 56%;
   left: 93%;
   width: 20%;
   animation: pizza-wobble 5s ease-in-out infinite;
 }
-.garlic-bulb {
+.homepage-pizza-animation .garlic-bulb {
   top: 71%;
   left: 66%;
   width: 18%;
   animation: pizza-slide 4s cubic-bezier(0.25, 0.79, 0.25, 0.79) infinite;
 }
-.pizza {
+.homepage-pizza-animation .pizza {
   width: 100%;
   top: 2%;
   left: -4%;
   height: auto;
   animation: pizza-rotate 9s ease-in-out infinite;
 }
-.onions {
+.homepage-pizza-animation .onions {
   top: 4%;
   left: 3%;
   width: 33%;
   animation: pizza-wobble 6s ease-in-out infinite;
 }
-.heart-green-outline-1 {
+.homepage-pizza-animation .heart-green-outline-1 {
   top: 17%;
   left: 1%;
   width: 10%;
   animation: pizza-heartbeat-rotate 8s ease-in-out infinite;
 }
-.peppercorns {
+.homepage-pizza-animation .peppercorns {
   top: -4%;
   left: 31%;
   width: 9%;
   animation: pizza-triangle-rotate 6s ease-in-out infinite;
 }
-.heart-tan-outline {
+.homepage-pizza-animation .heart-tan-outline {
   top: -4%;
   left: 60%;
   width: 9%;
   animation: pizza-heartbeat-rotate 6s ease-in-out infinite;
 }
-.tomatoes-fresh-cut {
+.homepage-pizza-animation .tomatoes-fresh-cut {
   top: -6%;
   left: 70%;
   width: 23%;
   animation: pizza-triangle-rotate 5s ease-in-out infinite;
 }
-.heart-green-fill {
+.homepage-pizza-animation .heart-green-fill {
   top: 6%;
   left: 68%;
   width: 10%;
   animation: pizza-heartbeat-pulse 1s cubic-bezier(0.25, 0.79, 0.25, 0.79)
     infinite;
 }
-.basil-leaf-1 {
+.homepage-pizza-animation .basil-leaf-1 {
   top: 32%;
   left: 77.5%;
   width: 24%;
   animation: pizza-triangle-rotate 9s ease-in-out infinite;
 }
-.heart-green-outline-2 {
+.homepage-pizza-animation .heart-green-outline-2 {
   top: 69%;
   left: 80%;
   width: 8%;
   animation: pizza-heartbeat-rotate 11s ease-in-out infinite;
 }
-.tomato-whole-and-slice {
+.homepage-pizza-animation .tomato-whole-and-slice {
   top: 46%;
   left: -6%;
   width: 28%;
   animation: pizza-wobble-sweep 7.5s ease-in-out infinite;
 }
-.basil-leaf-2 {
+.homepage-pizza-animation .basil-leaf-2 {
   top: 45%;
   left: 4%;
   width: 21%;
   animation: pizza-slide 8s ease-in-out infinite;
 }
-.basil-leaf-3 {
+.homepage-pizza-animation .basil-leaf-3 {
   top: 63.5%;
   left: 12.25%;
   width: 23%;
   animation: pizza-triangle-rotate 5s ease-in-out infinite;
 }
 
-.heart-solid {
+.homepage-pizza-animation .heart-solid {
   top: 6%;
   left: 65%;
   width: 11%;
