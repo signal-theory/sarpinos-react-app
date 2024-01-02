@@ -7,12 +7,11 @@ import '../menu/specials/Specials.css'
 import { Link } from 'react-router-dom';
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { useSnapCarousel } from 'react-snap-carousel';
-import { Fade } from "react-awesome-reveal";
 
 import olivesImg from '../../assets/olives.svg'
 import tomatoesCutImg from '../../assets/tomatoes-cut.svg'
 import garlicImg from '../../assets/garlic-bulb.svg'
-import heroPizzaImg from '../../assets/pizza.png'
+import heroPizzaImg from '../../assets/Pizza.png'
 import onionsImg from '../../assets/onions-sliced.png'
 import heartGreenOutlineImg from '../../assets/heart-green-outline.svg'
 import peppercornsImg from '../../assets/peppercorns-two.svg'
@@ -138,7 +137,12 @@ const Home = () => {
             <img className="olives" src={olivesImg} />
             <img className="tomatoes-cut" src={tomatoesCutImg} />
             <img className="garlic-bulb" src={garlicImg} />
-            <img className="pizza" src={heroPizzaImg} />
+             <LazyLoadImage
+              src={heroPizzaImg}
+              alt="sarpinos pizza"
+              effect="blur"
+              className="pizza"
+            />
             <img className="onions" src={onionsImg} />
             <img className="heart-green-outline-1" src={heartGreenOutlineImg} />
             <img className="peppercorns" src={peppercornsImg} />
