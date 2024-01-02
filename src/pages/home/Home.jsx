@@ -252,7 +252,7 @@ const Home = () => {
             <div className="content flex-align-center" style={{ alignItems: 'flex-start' }}>
               <h2>{cateringSectionHeadline}</h2>
               <p>{cateringSectionParagraph}</p>
-              <Link to="/catering" className="btn primary-btn" style={{ marginBottom: '4rem' }}><span>Catering Info</span></Link>
+              <Link to="/catering" className="btn primary-btn"><span>Catering Info</span></Link>
             </div>
           </div>
         </div>

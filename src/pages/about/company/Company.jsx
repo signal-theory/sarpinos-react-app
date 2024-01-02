@@ -17,6 +17,7 @@ const Company = () => {
   const [pageContent, setPageContent] = useState(null);
   const [gourmetHeadline, setGourmetHeadline] = useState(null);
   const [gourmetParagraph, setGourmetParagraph] = useState(null);
+  const [historyHeadline, setHistoryHeadline] = useState(null);
   const [gourmetIngredients1, setGourmetIngredients1] = useState(null);
   const [gourmetIngredients2, setGourmetIngredients2] = useState(null);
   const [gourmetIngredients3, setGourmetIngredients3] = useState(null);
@@ -35,6 +36,7 @@ const Company = () => {
         setPageContent(post.content.rendered); // Set the page content
         setGourmetHeadline(post.acf.gourmet_headline); // Set the gourmet headline
         setGourmetParagraph(post.acf.gourmet_paragraph); // Set the gourmet paragraph
+        setHistoryHeadline(post.acf.history_headline); // Set the history headline
         setGourmetIngredients1(post.acf.gourmet_ingredients_1); // Set the gourmet ingredients 1
         setGourmetIngredients2(post.acf.gourmet_ingredients_2); // Set the gourmet ingredients 2
         setGourmetIngredients3(post.acf.gourmet_ingredients_3); // Set the gourmet ingredients 3
@@ -114,12 +116,15 @@ const Company = () => {
       </section>
       <section className="viewport innerhero cream-color">
         <div className="full-page-container company-page inner-hero">
-          <div className="responsive-column-container">
-            <div className="timeline">
-              // timeline
-            </div>
-            <div className="pizza">
-              //pizza
+          <div className="history-container" style={{ padding: '5rem 2rem' }}>
+            {historyHeadline && <h2>{historyHeadline}</h2>}
+            <div className="responsive-column-container">
+              <div className="timeline">
+                // timeline
+              </div>
+              <div className="pizza">
+                //pizza
+              </div>
             </div>
           </div>
         </div>
