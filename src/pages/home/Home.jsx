@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import SEOHelmet from '../../components/SEOHelmet'
-import Loading from '../../components/Loading'
+import SEOHelmet from '../../components/SEOHelmet.jsx'
+import Loading from '../../components/Loading.jsx'
 import './Home.css'
 import '../menu/specials/Specials.css'
 import { Link } from 'react-router-dom';
@@ -26,9 +26,9 @@ import basilImg_3 from '../../assets/basil-leaf-3.png'
 import heartSolid from '../../assets/heart-solid.svg'
 import specialsBKG from '../../assets/circle-outline-1.svg'
 
-import { Car } from '../../components/svgs/drawing-car'
-import { Moon } from '../../components/svgs/drawing-moon'
-import { Calendar } from '../../components/svgs/drawing-calendar'
+import Car from '../../components/svgs/drawing-car.jsx'
+import Moon from '../../components/svgs/drawing-moon.jsx'
+import Calendar from '../../components/svgs/drawing-calendar.jsx'
 
 
 
@@ -137,7 +137,7 @@ const Home = () => {
             <img className="olives" src={olivesImg} />
             <img className="tomatoes-cut" src={tomatoesCutImg} />
             <img className="garlic-bulb" src={garlicImg} />
-             <LazyLoadImage
+            <LazyLoadImage
               src={heroPizzaImg}
               alt="sarpinos pizza"
               effect="blur"

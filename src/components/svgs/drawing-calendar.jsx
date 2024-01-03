@@ -1,4 +1,4 @@
-export const Calendar = () => {
+const Calendar = () => {
   return (
     <svg width="118" height="92" viewBox="0 0 118 92" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clipPath="url(#clip0_2839_2258)">
@@ -37,3 +37,5 @@ export const Calendar = () => {
     </svg>
   )
 }
+
+export default Calendar

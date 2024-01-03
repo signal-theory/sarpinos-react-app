@@ -5,8 +5,8 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import { Helmet } from 'react-helmet-async';
 import he from 'he';
-import TabList from '../TabList';
-import TabContent from '../TabContent';
+import TabList from '../TabList.jsx';
+import TabContent from '../TabContent.jsx';
 
 const MenuItem = ({ itemType, activeTab, tabs, content, orderHandler }) => {
   const [post, setPost] = useState(null);

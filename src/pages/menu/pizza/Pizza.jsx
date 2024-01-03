@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import SEOHelmet from '../../../components/SEOHelmet'
-import { fetchData } from '../../fetchData';
+import SEOHelmet from '../../../components/SEOHelmet.jsx'
+import { fetchData } from '../../fetchData.js';
 import '../Menu.css'
-import MenuHeader from '../../../components/menu/MenuHeader'
-import CategorySelector from '../../../components/CategorySelector'
-import MenuList from '../../../components/menu/MenuList'
+import MenuHeader from '../../../components/menu/MenuHeader.jsx'
+import CategorySelector from '../../../components/CategorySelector.jsx'
+import MenuList from '../../../components/menu/MenuList.jsx'
 import { useLocation } from 'react-router-dom';
 
 const Pizza = () => {

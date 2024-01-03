@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import SEOHelmet from '../../../components/SEOHelmet'
+import SEOHelmet from '../../../components/SEOHelmet.jsx'
 import './Company.css'
 import axios from 'axios'
 import { Link } from 'react-router-dom';
-import Loading from '../../../components/Loading'
+import Loading from '../../../components/Loading.jsx'
 import basilImg_1 from '../../../assets/basil-leaf-1.png'
 import basilImg_2 from '../../../assets/basil-leaf-2.png'
 import basilImg_3 from '../../../assets/basil-leaf-3.png'

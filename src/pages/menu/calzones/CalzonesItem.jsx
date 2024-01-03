@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import MenuItem from '../../../components/menu/MenuItem'
+import MenuItem from '../../../components/menu/MenuItem.jsx'
 
 const CalzonesItem = () => {
   const itemType = 'calzones';

@@ -1,6 +1,6 @@
 import React from 'react';
-import MenuList_Thumb from './MenuList_Thumb';
-import MenuList_Label from './MenuList_Label';
+import MenuList_Thumb from './MenuList_Thumb.jsx';
+import MenuList_Label from './MenuList_Label.jsx';
 
 const MenuList = ({ filteredPosts, orderHandler, loading }) => (
   <div className="menupage-list responsive-three-column-container">

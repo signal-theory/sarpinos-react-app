@@ -1,4 +1,4 @@
-export const Moon = () => {
+const Moon = () => {
   return (
     <svg width="133" height="131" viewBox="0 0 133 131" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clipPath="url(#clip0_2839_2253)">
@@ -18,3 +18,5 @@ export const Moon = () => {
     </svg>
   )
 }
+
+export default Moon

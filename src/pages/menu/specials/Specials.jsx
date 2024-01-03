@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 //import './Specials.css'
 import axios from 'axios'
-import SEOHelmet from '../../../components/SEOHelmet'
+import SEOHelmet from '../../../components/SEOHelmet.jsx'
 
 const Specials = () => {
 

@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
-export default function BlogCard({ post }) {
+function BlogCard({ post }) {
   const [featuredImage, setFeaturedImage] = useState();
   const getImage = () => {
     axios
@@ -49,3 +49,4 @@ export default function BlogCard({ post }) {
   );
 
 }
+export default BlogCard;

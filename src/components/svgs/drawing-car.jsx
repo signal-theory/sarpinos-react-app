@@ -1,4 +1,4 @@
-export const Car = () => {
+const Car = () => {
   return (
     <svg width="308" height="110" viewBox="0 0 308 110" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clipPath="url(#clip0_2839_2237)">
@@ -20,3 +20,5 @@ export const Car = () => {
     </svg>
   )
 }
+
+export default Car

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Nav.css';
-import NavMobile from './NavMobile';
-import NavDesktop from './NavDesktop';
+import NavMobile from './NavMobile.jsx';
+import NavDesktop from './NavDesktop.jsx';
 
 function Navigation() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1199);

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import './Loyalty.css'
 import axios from 'axios'
-import SEOHelmet from '../../components/SEOHelmet'
-import Loading from '../../components/Loading'
+import SEOHelmet from '../../components/SEOHelmet.jsx'
+import Loading from '../../components/Loading.jsx'
 
 const Loyalty = () => {
 

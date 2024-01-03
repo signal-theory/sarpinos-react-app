@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from "axios"
-import BlogCard from '../../../components/BlogCard';
+import BlogCard from '../../../components/BlogCard.jsx';
 
 export default function Blog() {
   const [posts, setPosts] = useState([]);
