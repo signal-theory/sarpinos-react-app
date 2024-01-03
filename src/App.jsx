@@ -22,7 +22,7 @@ import './App.css'
 import './Animate.css'
 
 
-function App() {
+const App = () => {
   return (
     <>
       <Navigation />
@@ -50,5 +50,5 @@ function App() {
       <Footer />
     </>
   )
-}
+};
 export default App;
